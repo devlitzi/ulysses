@@ -42,4 +42,11 @@ angular.module('ulyssesApp')
       // PUSH IT REAL GOOD
       $scope.schedule.unassigned.push(assigned.splice(assigned.indexOf(volunteer), 1)[0]);
     };
+
+    $scope.timeConvert = function(slot) {
+      var start = moment(slot.start);
+      var end = moment(slot.end);
+
+      return start.format('h:mma') + ' to ' + end.format('h:mma');
+    };
   });

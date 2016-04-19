@@ -7,11 +7,12 @@
   </div>
 
   <div ng-repeat="job in schedule.jobs" class="job-col">
-    <div class="job-header">
-      <label>{{job.name}}  <span ng-if="job.isJudging" class="judgeJ">J</span></label>
-      <br>
-      <i>Arrive {{job.training}} minutes before shift for training</i>
-    </div>
+      <div class="job-header">
+        <label>{{job.name}}  <span ng-if="job.isJudging" class="judgeJ">J</span></label>
+        <br>
+        <i>Arrive {{job.training}} minutes before shift for training</i>
+      </div>
+
 
     <div class="slot-container">
       <a ng-repeat="slot in job.slots" class="slot" ng-style="calculateSlotPosition(slot)" ui-sref="schedule.edit.assign({ job: job._id, slot: slot._id })">

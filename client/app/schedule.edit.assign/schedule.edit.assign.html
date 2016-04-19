@@ -18,6 +18,7 @@
 
   <div class="col-sm-6">
     <div class="list-group Fixed">
+      <h3><span class="label label-default">{{job.name}}: {{timeConvert(slot)}}</span></h3>
       <a class="list-group-item" ng-click="unassign(volunteer, slot)" ng-repeat="volunteer in slot.assigned track by $index">
         {{ volunteer.name }}
       <span ng-if="volunteer.isJudge" class="judgeJ">  J</span>  <span class="badge hover-badge">← Unassign</span>
