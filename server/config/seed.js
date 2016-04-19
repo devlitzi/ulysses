@@ -15,6 +15,8 @@ Schedule.find({}).removeAsync().then(() => {
     jobs: [{
       name: 'Food service',
       training: 15,
+      location: 'Gym 1',
+      defaultLocation: true,
       slots: [{
         assigned: [],
         positions: 4,
@@ -49,6 +51,8 @@ Schedule.find({}).removeAsync().then(() => {
     }, {
       name: 'Blue House Doorkeeper',
       training: 15,
+      location: 'Cafetorium',
+      defaultLocation: true,
       slots: [{
         assigned: [],
         positions: 1,
@@ -88,45 +92,56 @@ Schedule.find({}).removeAsync().then(() => {
     }, {
       name: 'Gym Doorkeeper',
       training: 15,
+      defaultLocation: false,
       slots: [{
         assigned: [],
         positions: 1,
+        location: 'Gym Door 1',
         start: new Date('April 1, 2016, 10:00:00'),
         end: new Date('April 1, 2016, 11:00:00')
       }, {
         assigned: [],
         positions: 1,
+        location: 'Gym Door 2',
         start:new Date('April 1, 2016, 11:00:00'),
         end: new Date('April 1, 2016, 12:00:00')
       }, {
         assigned: [],
         positions: 1,
+        location: 'Gym Door 3',
         start:new Date('April 1, 2016, 12:00:00'),
         end: new Date('April 1, 2016, 13:00:00')
       }, {
         assigned: [],
         positions: 1,
+        location: 'Gym Door 4',
         start:new Date('April 1, 2016, 13:00:00'),
         end: new Date('April 1, 2016, 14:00:00')
       }, {
         assigned: [],
         positions: 1,
+        location: 'Gym Door 5',
         start:new Date('April 1, 2016, 14:00:00'),
         end: new Date('April 1, 2016, 15:00:00')
       }, {
         assigned: [],
         positions: 1,
+        location: 'Gym Door 6',
         start:new Date('April 1, 2016, 15:00:00'),
         end: new Date('April 1, 2016, 16:00:00')
       }, {
         assigned: [],
         positions: 1,
+        location: 'Gym Door 7',
         start:new Date('April 1, 2016, 16:00:00'),
         end: new Date('April 1, 2016, 17:00:00')
       }]
     }, {
       name: 'Spontaneous check-in',
       training: 15,
+      isJudging: true,
+      location: 'Auditorium',
+      defaultLocation: true,
       slots: [{
         assigned: [],
         positions: 2,
@@ -152,24 +167,23 @@ Schedule.find({}).removeAsync().then(() => {
       name: 'Some Judge Job',
       training: 15,
       isJudging: true,
+      defaultLocation: false,
       slots: [{
         assigned: [],
         positions: 2,
+        location: 'Art room 87',
         start: new Date('April 1, 2016, 10:00:00'),
         end: new Date('April 1, 2016, 12:00:00')
       }, {
         assigned: [],
         positions: 2,
+        location: 'Science room 103',
         start:new Date('April 1, 2016, 12:00:00'),
         end: new Date('April 1, 2016, 14:00:00')
       }, {
         assigned: [],
-        positions: 2,
-        start:new Date('April 1, 2016, 14:00:00'),
-        end: new Date('April 1, 2016, 16:00:00')
-      }, {
-        assigned: [],
         positions: 1,
+        location: 'Science room 112',
         start:new Date('April 1, 2016, 16:00:00'),
         end: new Date('April 1, 2016, 17:00:00')
       }]

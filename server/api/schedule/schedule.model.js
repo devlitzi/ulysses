@@ -26,6 +26,7 @@ var VolunteerSchema = new mongoose.Schema({
 var SlotSchema = new mongoose.Schema({
   assigned: [VolunteerSchema],
   positions: Number,
+  location: String,
   start: Date,
   end: Date
 });
@@ -34,6 +35,8 @@ var JobSchema = new mongoose.Schema({
   name: String,
   training: Number,
   isJudging: Boolean,
+  defaultLocation: Boolean,
+  location: String,
   slots: [SlotSchema]
 });
 

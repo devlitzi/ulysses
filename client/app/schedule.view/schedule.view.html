@@ -10,12 +10,15 @@
       <div class="job-header">
         <label>{{job.name}}  <span ng-if="job.isJudging" class="judgeJ">J</span></label>
         <br>
-        <i>Arrive {{job.training}} minutes before shift for training</i>
+        <i>Arrive {{job.training}} minutes before shift for training</i><br>
+        <i ng-show="{{job.defaultLocation}}">Location: {{job.location}}</i>
+        <i ng-hide="{{job.defaultLocation}}">Location in shift.</i>
       </div>
 
 
     <div class="slot-container">
       <a ng-repeat="slot in job.slots" class="slot" ng-style="calculateSlotPosition(slot)" ui-sref="schedule.edit.assign({ job: job._id, slot: slot._id })">
+        <div ng-hide="{{job.defaultLocation}}"><u>Location:</u> {{slot.location}}</div>
         <div ng-repeat="volunteer in slot.assigned">
           {{volunteer.name}}  <span ng-if="volunteer.isJudge" class="judgeJ">J</span>
         </div>
