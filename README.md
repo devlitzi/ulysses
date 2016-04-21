@@ -1,6 +1,6 @@
 # ulysses
 
-[Our Burndown Chart](https://docs.google.com/a/morris.umn.edu/spreadsheets/d/10u8tFtsQE0KksfWKahfd_ZO1DlBqNFiJhLP7YAq7DVM/edit?usp=sharing)
+[Burndown Chart Iteration 4](https://docs.google.com/spreadsheets/d/1wdH1fOfD3K72adOXwbmNKLQDmPGhZHfRIFJFEp_SgVM/edit#gid=425182257)
 
 This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 3.3.0.
 
