@@ -57,6 +57,7 @@
 .Fixed3
 {
     position: fixed;
-    top: 245px;
-    width: 300px;
+    width: 190px;
+    background-color: white;
+    z-index: 100;
 }
