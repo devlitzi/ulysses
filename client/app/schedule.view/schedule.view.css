@@ -54,10 +54,20 @@
   border-radius: 10px;
 }
 
-.Fixed3
+.fixedTop
 {
-    position: fixed;
-    width: 190px;
-    background-color: white;
-    z-index: 100;
+  position: fixed;
+  width: 190px;
+  background-color: white;
+  z-index: 100;
+  top: 0;
+  border-bottom: 1px solid black;
+}
+
+.fixedMid
+{
+  position: fixed;
+  width: 190px;
+  background-color: white;
+  z-index: 100;
 }
