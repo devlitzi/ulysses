@@ -49,11 +49,11 @@ angular.module('ulyssesApp')
 
       return start.format('h:mma') + ' to ' + end.format('h:mma');
     };
-    
     /*
+    =====================================================================================================
 
      // send email to all volunteers
-     var sendEmails = function(vols){
+     $scope.sendEmails = function(vols){
      var str = 'http://mail.google.com/mail/?view=cm&fs=1'+
      '&to=' + vols.to +
      '&su=' + vols.subject +
@@ -61,10 +61,10 @@ angular.module('ulyssesApp')
      '&ui=1';
      $window.open(str);
      };
-
-     self.emailAllVolunteers = function() {
+//////////////////////////////////////////////
+     $scope.emailAllVolunteers = function() {
      var emailList = "";
-     self.data.forEach(function(volunteer) {
+     $scope.data.forEach(function(volunteer) {
      emailList += volunteer.email + ","
      });
      setTimeout(function() {
@@ -77,13 +77,13 @@ angular.module('ulyssesApp')
      }, 1000);
 
      };
-     
-     
+
+
      =============Lower Down Fcts=================
 
 
-     // send email to all volunteers
-     var sendEmail = function(vols){
+     /////////////////////////////////////////////// send email to all volunteers
+     $scope.sendEmail = function(vols){
      var str = 'http://mail.google.com/mail/?view=cm&fs=1'+
      '&to=' + vols.to +
      '&su=' + vols.subject +
@@ -92,18 +92,18 @@ angular.module('ulyssesApp')
      $window.open(str);
      };
 
-
-     self.emailVolunteer = function() {
+///////////////////////////////////////////////////
+    $scope.emailVolunteer = function() {
      var jobInfo = "";
-     self.volunteer.slots.forEach(function(slotID) {
+     $scope.volunteer.slots.forEach(function(slotID) {
      Slot.get({id: slotID}).$promise.then(function(slot) {
      Job.get({id: slot.jobID}, function(job){
-     self.volunteer.locations.forEach(function (location) {
+     $scope.volunteer.locations.forEach(function (location) {
      if (location.slotID == slotID) {
      Location.get({id: location.locationID}, function (location2) {
      slot.location = location2.name;
      console.log("this is the location: " + slot.location);
-     jobInfo += "Job Title: " + job.title + "%0D%0AStart Time: " + self.parseTime(slot.start) + "%0D%0AEnd Time: " + self.parseTime(slot.end) + "%0D%0ALocation: " + slot.location + "%0D%0A%0D%0A";
+     jobInfo += "Job Title: " + job.title + "%0D%0AStart Time: " + $scope.parseTime(slot.start) + "%0D%0AEnd Time: " + $scope.parseTime(slot.end) + "%0D%0ALocation: " + slot.location + "%0D%0A%0D%0A";
      })
      }
      });
@@ -113,13 +113,13 @@ angular.module('ulyssesApp')
      });
      });
 
-     console.log("what is self.volunteer? " + jobInfo);
+     console.log("what is $scope.volunteer? " + jobInfo);
      setTimeout(function() {
      sendEmail({
-     to: self.volunteer.email,
+     to: $scope.volunteer.email,
      subject: "Volunteer Information for Odyssey of the Mind",
-     message: "Dear " + self.volunteer.firstName + "," + "%0D%0A%0D%0A" + "Thank you for your participation in this event! Our records show your team of interest is "
-     + self.volunteer.childTeam.substring(1) + ".%0D%0A%0D%0A"
+     message: "Dear " + $scope.volunteer.firstName + "," + "%0D%0A%0D%0A" + "Thank you for your participation in this event! Our records show your team of interest is "
+     + $scope.volunteer.childTeam.substring(1) + ".%0D%0A%0D%0A"
      + "You have been assigned to the following:%0D%0A%0D%0A"
      + jobInfo + "You can log in to see your schedule at http://localhost:9000/ using the email \"peter@example.com\" and the password \"peter\".%0D%0A%0D%0ASincerely,%0D%0A%0D%0AOdyssey of the Mind"
 
@@ -127,10 +127,6 @@ angular.module('ulyssesApp')
      }, 1000);
 
      };
+    */
 
-
-
-
-     */
-    
   });
