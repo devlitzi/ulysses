@@ -59,28 +59,51 @@ angular.module('ulyssesApp')
                   var volunteer = unassigned[type].shift();
                   $scope.schedule.unassigned.splice($scope.schedule.unassigned.indexOf(volunteer), 1);
                   slot.assigned.push(volunteer);
+
                 }
               }
             }
           }
         };
-        
+
+
+//Zach's sorting function
+    // $scope.auto = function() {
+    //   var unassigned = $scope.schedule.unassigned;
+    //   unassigned.sort(function(a, b) {return b.constraints.length - a.constraints.length})
+    //   //Separate judging and non-judging jobs:
+    //   var jobs = {
+    //     judging: $scope.schedule.jobs.filter(function(job) {
+    //       return job.isJudging;
+    //     }),
+    //     nonjudging: $scope.schedule.jobs.filter(function(job) {
+    //       return !job.isJudging;
+    //     })
+    //   };
+    //   console.log(unassigned[1]);
+    //   //iterate through all unassigned volunteers
+    //   for (var volunteer in unassigned){
+    //     console.log(unassigned[volunteer]);
+    //   }
+    // }
+
     $scope.duration = function(time1, time2){
       return time2.getHours()-time1.getHours() + Math.abs(time2.getMinutes()-time1.getMinutes())/60;
     }
 
+    //Removes all assigned people.
     $scope.unLucky = function() {
-      console.log($scope.schedule.jobs);
+      //console.log($scope.schedule.jobs);
       for(var i = 0; i<$scope.schedule.jobs.length; i++){
         var job = $scope.schedule.jobs[i];
-        console.log(job.name);
+        //console.log(job.name);
         for(var j = 0; j<job.slots.length; j++){
           var slot = job.slots[j];
-          console.log(slot.start);
+          //console.log(slot.start);
           for(var k = 0; k<slot.assigned.length; k++){
             var vol = slot.assigned[k];
             var volThing = slot.assigned.indexOf(vol)
-            console.log(vol.name);
+            //console.log(vol.name);
             $scope.schedule.unassigned.push(vol);
           }
           slot.assigned = [];
