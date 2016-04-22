@@ -8,8 +8,5 @@
   width: 10000px;
   background-color: white;
   z-index: 100;
-  top: 200;
-}
-.fixedUnderNavbar{
-  top:300;
+  height: 130px;
 }
