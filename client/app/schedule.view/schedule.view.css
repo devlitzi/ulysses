@@ -1,5 +1,5 @@
 .job-col {
-  border: 1px solid black;
+  border: 2px solid black;
   display: table-cell;
   height: 1200px;
   width: 200px;
@@ -23,6 +23,7 @@
 
 .job-header {
   border-bottom: 1px solid black;
+  border-top: 1px solid black;
 }
 
 .paddingBig2 {
@@ -57,7 +58,6 @@
 
 .fixedMid
 {
-  border-top: 1px solid white;
   position: fixed;
   width: 190px;
   background-color: white;
