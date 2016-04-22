@@ -25,3 +25,7 @@
 .navbar-text {
   margin-left: 15px;
 }
+.paddingBig {
+  padding-top: 100px;
+  background-color: white;
+}
