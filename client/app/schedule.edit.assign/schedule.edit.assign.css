@@ -31,3 +31,8 @@ a.list-group-item {
     top: 225px;
     width: 300px;
 }
+
+.smallertext
+{
+  font-size: 15px;
+}

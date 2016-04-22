@@ -14,4 +14,15 @@ angular.module('ulyssesApp')
           console.log('An error happened / You write terrible software / Life is meaningless');
         });
     };
+    // 
+    // $scope.fixNavbar = function() {
+    //     if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    //         document.getElementById("myDiv").className = "fixedTop";
+    //     } else {
+    //         document.getElementById("myDiv").className = "fixedUnderNavbar";
+    //     }
+    // }
+    // window.onscroll = function() {
+    //   $scope.fixNavbar();
+    // }
   });

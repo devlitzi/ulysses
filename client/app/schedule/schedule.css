@@ -1,3 +1,15 @@
 .schedule-sub {
   margin-top: 2em;
 }
+
+.fixedTop
+{
+  position: fixed;
+  width: 10000px;
+  background-color: white;
+  z-index: 100;
+  top: 200;
+}
+.fixedUnderNavbar{
+  top:300;
+}

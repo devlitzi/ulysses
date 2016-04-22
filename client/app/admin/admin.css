@@ -17,3 +17,7 @@
 	align-items: center;
 	text-decoration: none;
 }
+.paddingBig {
+  padding-top: 100px;
+  background-color: white;
+}
