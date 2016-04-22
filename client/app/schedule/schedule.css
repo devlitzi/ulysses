@@ -1,3 +1,13 @@
 .schedule-sub {
   margin-top: 2em;
 }
+
+.fixedTop
+{
+  position: fixed;
+  width: 1080px;
+  background-color: white;
+  z-index: 100;
+  top: 0;
+
+}

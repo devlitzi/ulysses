@@ -54,15 +54,6 @@
   border-radius: 10px;
 }
 
-.fixedTop
-{
-  position: fixed;
-  width: 190px;
-  background-color: white;
-  z-index: 100;
-  top: 0;
-  border-bottom: 1px solid black;
-}
 
 .fixedMid
 {
@@ -70,4 +61,5 @@
   width: 190px;
   background-color: white;
   z-index: 100;
+  top: 150;
 }
