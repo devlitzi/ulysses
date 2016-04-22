@@ -5,9 +5,11 @@
 .fixedTop
 {
   position: fixed;
-  width: 1080px;
+  width: 10000px;
   background-color: white;
   z-index: 100;
-  top: 0;
-
+  top: 200;
+}
+.fixedUnderNavbar{
+  top:300;
 }

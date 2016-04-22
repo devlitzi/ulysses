@@ -25,9 +25,9 @@
   border-bottom: 1px solid black;
 }
 
-.job-table {
-  border-collapse: collapse;
-  display: table;
+.paddingBig2 {
+  padding-top: 100px;
+
 }
 
 .time-block {
@@ -57,9 +57,20 @@
 
 .fixedMid
 {
+  border-top: 1px solid white;
   position: fixed;
   width: 190px;
   background-color: white;
   z-index: 100;
   top: 150;
+}
+.job-table {
+  padding-top: 1000px;
+  border-collapse: collapse;
+  display: table;
+}
+
+.fixme{
+  background: black;
+  width: auto;
 }

@@ -5,3 +5,8 @@
 .form-inline .form-control-narrow {
   width: 60px;
 }
+
+.paddingBig {
+  padding-top: 100px;
+  background-color: white;
+}
