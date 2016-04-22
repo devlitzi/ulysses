@@ -1,12 +1,12 @@
-<div class="paddingBig">
+<div class="paddingBigAssign">
 <form ng-submit="$parent.continue('schedule.view')">
-  <div class="form-group">
+  <div class="form-group fixedTopAssign">
     <button type="submit" class="btn btn-success">Save and continue</button>
     <button type="button" class="btn btn-default" ng-click="auto()">I'm Feeling Lucky</button>
     <button type="button" class="btn btn-default" ng-click="unLucky()">I wasn't lucky</button>
   </div>
 </form>
-
+<div class="paddingBigAssign2">
 <div class="row">
   <div class="col-sm-4">
     <div ng-repeat="job in schedule.jobs">
@@ -26,5 +26,6 @@
   <div class="col-sm-8">
     <div ui-view></div>
   </div>
+</div>
 </div>
 </div>
