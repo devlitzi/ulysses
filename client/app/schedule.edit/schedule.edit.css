@@ -2,3 +2,20 @@
   padding-top: 100px;
   background-color: white;
 }
+.fixedTopAssign
+{
+  position: fixed;
+  width: 10000px;
+  background-color: white;
+  z-index: 100;
+}
+
+.paddingBigAssign {
+  padding-top: 80px;
+  background-color: white;
+}
+
+.paddingBigAssign2 {
+  padding-top: 50px;
+  background-color: white;
+}

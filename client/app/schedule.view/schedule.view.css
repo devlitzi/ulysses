@@ -62,15 +62,9 @@
   width: 190px;
   background-color: white;
   z-index: 100;
-  top: 150;
 }
 .job-table {
   padding-top: 1000px;
   border-collapse: collapse;
   display: table;
-}
-
-.fixme{
-  background: black;
-  width: auto;
 }
