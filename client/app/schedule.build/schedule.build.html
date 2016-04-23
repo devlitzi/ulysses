@@ -1,9 +1,10 @@
-<div class="paddingBig">
+<div class="paddingBigBuild2">
 <form ng-submit="$parent.continue('schedule.input')">
-  <div class="form-group">
+  <div class="form-group fixedTopBuild">
     <button type="submit" class="btn btn-success" ng-click="schedule.jobs.save({ slots: [] })"> Save and continue</button>
   </div>
 
+<div class="paddingBigBuild">
   <div class="list-group">
     <div class="list-group-item" ng-repeat="job in schedule.jobs">
       <div class="row">
@@ -70,6 +71,6 @@
   </div>
 
   <button type="button" class="btn btn-default" ng-click="addJob()">Add another Job</button>
-  <button type="submit" class="btn btn-success" ng-click="schedule.jobs.save({ slots: [] })"> Save and continue</button>
 </form>
+</div>
 </div>
