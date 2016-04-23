@@ -42,8 +42,7 @@ angular.module('ulyssesApp')
             var aVol = slot.assigned[k];
             console.log(aVol);
             if(aVol == volunteer){
-              //lol hi Dan, SCREW YOU, I'M DOING A WINDOW ALERT!
-              window.alert(volunteer.name + " is assinged to " + job.name + ". Please unassign volunteer before deleting.");
+              window.alert(volunteer.name + " is assigned to " + job.name + ". Please unassign volunteer before deleting.");
             }
           }
         }
@@ -128,7 +127,8 @@ angular.module('ulyssesApp')
         shirt: row["T-shirt"],
         positions: [],
         isJudge: row[""] == "AS_JUDGE",
-        preferences: []
+        preference1: row["Job Preference #1"],
+        preference2: row["Job Preference #2"]
       };
     };
 
