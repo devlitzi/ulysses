@@ -10,82 +10,67 @@ angular.module('ulyssesApp')
     });
 
     $scope.auto = function() {
-          // Separate judging and non-judging jobs:
-          var jobs = {
-            judging: $scope.schedule.jobs.filter(function(job) {
-              return job.isJudging;
-            }),
-            nonjudging: $scope.schedule.jobs.filter(function(job) {
-              return !job.isJudging;
-            })
-          };
+      var unassigned = $scope.schedule.unassigned;
+      unassigned.sort(function(a, b) {return b.constraints.length - a.constraints.length})
+      //Separate judging and non-judging jobs:
+      var jobs = {
+        judging: $scope.schedule.jobs.filter(function(job) {
+          return job.isJudging;
+        }),
+        nonjudging: $scope.schedule.jobs.filter(function(job) {
+          return !job.isJudging;
+        })
+      };
+      //iterate through all unassigned volunteers
+      for (var volunteer in unassigned){
+        // if a volunteer is a judge and the judge positions have openings, put them in first
+        if (unassigned[volunteer].isJudge && judgingHasOpening(jobs)) {
+          jobs = fillFirstJudgingSpot(unassigned[volunteer], jobs);
+        } else {
+          jobs = fillNonJudgingSpot(unassigned[volunteer], jobs);
+        }
+      }
+    }
 
-          // Separate judging and non-judging volunteers:
-          var unassigned = {
-            judging: $scope.schedule.unassigned.filter(function(volunteer) {
-              return volunteer.isJudge;
-            }),
-            nonjudging: $scope.schedule.unassigned.filter(function(volunteer) {
-              return !volunteer.isJudge;
-            })
-          };
+    //Checks to see if there is an open job in judging
+    var judgingHasOpening = function(jobs){
+      var totalPositions = 0;
+      var totalFilledPositons = 0;
+      for (var job in jobs.judging) {
+        for (var slot in jobs.judging[job].slots) {
+          totalPositions += jobs.judging[job].slots[slot].positions;
+          totalFilledPositons += jobs.judging[job].slots[slot].assigned.length;
+        }
+      }
+      return totalPositions > totalFilledPositons
+    };
 
-          // For judging and nonjudging:
-          for (var type in jobs) {
-            // If there are no volunteers of that type, skip:
-            if (!unassigned[type].length) {
-              continue;
-            }
-
-            // Iterate over jobs:
-            j:
-            for (var i = 0; i < jobs[type].length; i++) {
-              var job = jobs[type][i];
-              // If someday we care about preferences, do it here...
-
-              // Iterate over slots:
-              s:
-              for (var j = 0; j < job.slots.length; j++) {
-                var slot = job.slots[j];
-
-                // Iterate over volunteers because efficiency is for nerds:
-                v:
-                for (var k = 0; k < unassigned[type].length; k++) {
-                  // If the slot is full, skip:
-                  if (slot.assigned.length >= slot.positions) {
-                    continue s;
-                  }
-
-                  var volunteer = unassigned[type].shift();
-                  $scope.schedule.unassigned.splice($scope.schedule.unassigned.indexOf(volunteer), 1);
-                  slot.assigned.push(volunteer);
-
-                }
-              }
-            }
+    //fills first empty judging spot, if there isn't one available, does nothing
+    var fillFirstJudgingSpot = function(volunteer, jobs){
+      for (var job in jobs.judging) {
+        for (var slot in jobs.judging[job].slots) {
+          if (jobs.judging[job].slots[slot].positions > jobs.judging[job].slots[slot].assigned.length){
+            jobs.judging[job].slots[slot].assigned.push(volunteer);
+            $scope.schedule.unassigned.splice($scope.schedule.unassigned.indexOf(volunteer), 1);
+            return jobs;
           }
-        };
+        }
+      }
+    };
 
+    //fills first non-judging spot, if there isn't one available, does nothing
+    var fillNonJudgingSpot = function(volunteer, jobs){
+      for (var job in jobs.nonjudging) {
+        for (var slot in jobs.nonjudging[job].slots) {
+          if (jobs.nonjudging[job].slots[slot].positions > jobs.nonjudging[job].slots[slot].assigned.length){
+            jobs.nonjudging[job].slots[slot].assigned.push(volunteer);
+            $scope.schedule.unassigned.splice($scope.schedule.unassigned.indexOf(volunteer), 1);
+            return jobs;
 
-//Zach's sorting function
-    // $scope.auto = function() {
-    //   var unassigned = $scope.schedule.unassigned;
-    //   unassigned.sort(function(a, b) {return b.constraints.length - a.constraints.length})
-    //   //Separate judging and non-judging jobs:
-    //   var jobs = {
-    //     judging: $scope.schedule.jobs.filter(function(job) {
-    //       return job.isJudging;
-    //     }),
-    //     nonjudging: $scope.schedule.jobs.filter(function(job) {
-    //       return !job.isJudging;
-    //     })
-    //   };
-    //   console.log(unassigned[1]);
-    //   //iterate through all unassigned volunteers
-    //   for (var volunteer in unassigned){
-    //     console.log(unassigned[volunteer]);
-    //   }
-    // }
+          }
+        }
+      }
+    };
 
     $scope.duration = function(time1, time2){
       return time2.getHours()-time1.getHours() + Math.abs(time2.getMinutes()-time1.getMinutes())/60;
@@ -179,20 +164,6 @@ angular.module('ulyssesApp')
     }
   }
 
-    // $scope.auto = function (){
-    //   for(var i in $scope.schedule.jobs){
-    //     var job = $scope.schedule.jobs[i];
-    //     // console.log(job.name);
-    //     for(var j in job.slots){
-    //       var slot = job.slots[j];
-    //       // console.log(slot.start);
-    //       // console.log(slot.end);
-    //       if(slot.assigned.length < slot.positions){
-    //         $scope.populateIndivSlot(slot, job);
-    //       }
-    //     }
-    //   }
-    // }
 
     $scope.timeRange = function(slot) {
       var start = moment(slot.start);
