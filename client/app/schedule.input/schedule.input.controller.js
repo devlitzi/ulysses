@@ -127,7 +127,8 @@ angular.module('ulyssesApp')
         shirt: row["T-shirt"],
         positions: [],
         isJudge: row[""] == "AS_JUDGE",
-        preferences: []
+        preference1: row["Job Preference #1"],
+        preference2: row["Job Preference #2"]
       };
     };
 

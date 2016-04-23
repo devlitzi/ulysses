@@ -138,9 +138,20 @@
         </div>
 
         <div class="form-group">
+          <label>Job Preferences</label>
+          <br>
+          <input type="text" class="form-control" ng-model="detail.preference1" />
+          <br>
+          <input type="text" class="form-control" ng-model="detail.preference2" />
+        </div>
+
+        <br>
+
+        <div class="form-group">
           <button type="submit" class="btn btn-success">Done</button>
           <button type="submit" class="btn btn-danger" ng-click="removeVolunteer(detail)">Remove</button>
         </div>
+
       </form>
     </div>
   </div>
