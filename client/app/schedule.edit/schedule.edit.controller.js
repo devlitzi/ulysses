@@ -37,9 +37,9 @@ angular.module('ulyssesApp')
         } else {
           jobs = fillNonJudgingSpot(unassigned[volunteer], jobs);
         }
+        if(temp=unassigned.length){temp0++;}else{temp0=0;}
+        if(temp0>len){break;}
       }
-      if(temp=unassigned.length){temp0++;}else{temp0=0;}
-      if(temp0>len){break;}
     }
 
     //Checks to see if there is an open job in judging
