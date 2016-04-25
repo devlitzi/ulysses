@@ -22,7 +22,15 @@ angular.module('ulyssesApp')
         })
       };
       //iterate through all unassigned volunteers
-      for (var volunteer in unassigned){
+      //for (var volunteer in unassigned){
+      console.log("unassigned volunteers: " + unassigned.length);
+      //for(var volunteer=0;volunteer<90;volunteer++){
+      var volunteer=0;
+      var temp;
+      var temp0;
+      var len = unassigned.length;
+      while(unassigned.length>0){
+        console.log("volunteer is: " + volunteer);
         // if a volunteer is a judge and the judge positions have openings, put them in first
         if (unassigned[volunteer].isJudge && judgingHasOpening(jobs)) {
           jobs = fillFirstJudgingSpot(unassigned[volunteer], jobs);
@@ -30,6 +38,8 @@ angular.module('ulyssesApp')
           jobs = fillNonJudgingSpot(unassigned[volunteer], jobs);
         }
       }
+      if(temp=unassigned.length){temp0++;}else{temp0=0;}
+      if(temp0>len){break;}
     }
 
     //Checks to see if there is an open job in judging
