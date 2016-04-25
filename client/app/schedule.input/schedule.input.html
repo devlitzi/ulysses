@@ -1,32 +1,14 @@
-<div class="paddingBig">
+<div class="paddingBigManage">
 <form ng-submit="$parent.continue('schedule.edit')">
-  <div class="form-group">
+  <div class="form-group fixedTopManage">
     <button type="submit" class="btn btn-success">Save and continue</button>
     <button type="button"class="btn btn-default" ng-click="addVolunteer()">Add Volunteer</button>
-
-  </div>
-  <div>
-    <button ng-click="$scope.sendEmail()" type="button" class="btn btn-success">Email Volunteer</button>
-  </div>
-
-  <div class="panel panel-default volunteer-container">
-    <div class="panel-heading">Email all volunteers:</div>
-    <div class="panel-body">
-      <form class="form-horizontal">
-        <div class="col-md-6">
-          <div class="form-group">
-            <div class="col-sm-9">
-              <button ng-click="volunteerCtrl.emailAllVolunteers()" type="button" class="btn btn-success">Email Volunteers</button>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
   </div>
 </form>
 
 <div class="row">
   <div class="col-md-4">
+    <div class="paddingBigManage2">
     <div class="panel panel-default">
       <div class="panel-heading">
         Import volunteers
@@ -46,7 +28,9 @@
         </form>
       </div>
     </div>
+  </div>
 
+<div class="paddingBigManage3">
     <div class="panel panel-default">
       <div class="panel-heading">
         Avoid team conflicts
@@ -85,6 +69,15 @@
     </div>
   </div>
 
+  <div class="panel panel-default volunteer-container">
+    <div class="panel-heading">Email all volunteers:</div>
+    <div class="panel-body">
+      <button ng-click="volunteerCtrl.emailAllVolunteers()" type="button" class="btn btn-success">Email Volunteers</button>
+    </div>
+  </div>
+
+  </div>
+
   <div class="col-md-4">
     <div class="form-group" ng-show="schedule.unassigned.length">
       <input type="text" class="form-control" placeholder="Filter by name" ng-model="filter.name" />
@@ -114,7 +107,8 @@
 
         <div class="form-group">
           <label>Email address</label>
-          <input type="email" class="form-control" ng-model="detail.email" />
+          <input type="email" class="form-control" ng-model="detail.email" /></br>
+          <button ng-click="$scope.sendEmail()" type="button" class="btn btn-success">Email Volunteer</button>
         </div>
 
         <div class="form-group">
@@ -134,20 +128,9 @@
         </div>
 
         <div class="form-group">
-          <label>Job Preferences</label>
-          <br>
-          <input type="text" class="form-control" ng-model="detail.preference1" />
-          <br>
-          <input type="text" class="form-control" ng-model="detail.preference2" />
-        </div>
-
-        <br>
-
-        <div class="form-group">
           <button type="submit" class="btn btn-success">Done</button>
           <button type="submit" class="btn btn-danger" ng-click="removeVolunteer(detail)">Remove</button>
         </div>
-
       </form>
     </div>
   </div>
