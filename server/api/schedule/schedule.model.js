@@ -3,6 +3,7 @@
 var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 
 var ConstraintSchema = new mongoose.Schema({
+  team: String,
   start: Date,
   end: Date
 });
