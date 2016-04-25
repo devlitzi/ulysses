@@ -50,16 +50,26 @@ angular.module('ulyssesApp')
   }
 
     $scope.process = function(data) {
-      if ($scope.volunteerCSV) {
-        papa.parse($scope.volunteerCSV, {
-          header: true,
-          step: function(result) {
-            $scope.schedule.unassigned.push(birthVolunteer(result.data[0]));
-          },
-          complete: function() {
-              $scope.$apply();
-          }
-        });
+      if ($scope.schedule.unassigned <= 0){
+        console.log("first one")
+        if ($scope.volunteerCSV) {
+          papa.parse($scope.volunteerCSV, {
+            header: true,
+            step: function(result) {
+              $scope.schedule.unassigned.push(birthVolunteer(result.data[0]));
+            },
+            complete: function() {
+                $scope.$apply();
+            }
+          });
+        }
+      }
+      if ($scope.schedule.unassigned > 0){
+        for (var i = 0; i < $scope.schedule.unassigned; i++) {
+         $scope.schedule.unassigned.email
+         console.log($scope.schedule.unassigned.email)
+       }
+
       }
     };
 
