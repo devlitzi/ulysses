@@ -148,85 +148,87 @@ angular.module('ulyssesApp')
 
       return start.format('h:mma') + ' to ' + end.format('h:mma');
     };
+    // $scope.teamFix = function(){
+    //   forEach(volunteer in $scope.schedule.unassigned){
+    //
+    //   }
+    // }
 
-  //   //=============Email Fcts for Multiple Volunteers===========================
-  //
-  //   // send email to all volunteers
-  //   $scope.sendEmails = function(volunteers){
-  //     console.log("hi");
-  //     var str = 'http://mail.google.com/mail/?view=cm&fs=1'+
-  //     '&to=' + volunteers.to +
-  //     '&su=' + volunteers.subject +
-  //     '&body=' + volunteers.message +
-  //     '&ui=1';
-  //     $window.open(str);
-  //   };
-  //   //-----------------------------------------------------------
-  //   $scope.emailAllVolunteers = function() {
-  //     for(var index =0; index < $scope.schedule.allVolunteers.length; index++){
-  //       var volunteer = $scope.schedule.volunteers[index];
-  //
-  //     console.log("hi");
-  //   }
-  //     // var emailList = "";
-  //     // volunteer.forEach(function(volunteer) {
-  //     //   emailList += volunteer.email + ","
-  //     // });
-  //     // setTimeout(function() {
-  //     //   sendEmails({
-  //     //     to: emailList,
-  //     //     subject: "Volunteer Information for Odyssey of the Mind",
-  //     //     message: "Dear Volunteer, %0D%0A%0D%0AThank you for your participation in this event!%0D%0A%0D%0AYou can log in to see your schedule at http://localhost:9000/ using the email \"peter@example.com\" and the password \"peter\".%0D%0A%0D%0ASincerely,%0D%0A%0D%0AOdyssey of the Mind"
-  //     //   });
-  //     // }, 1000);
-  //   };
-  //
-  //
-  // //  =============Email Fcts for Single Volunteer=================
-  //   $scope.sendEmail = function(volunteers){
-  //     console.log("here");
-  //     var str = 'http://mail.google.com/mail/?view=cm&fs=1'+
-  //     '&to=' + volunteers.to +
-  //     '&su=' + volunteers.subject +
-  //     '&body=' + volunteer.message +
-  //     '&ui=1';
-  //     $window.open(str);
-  //   };
-  //
-  //   //------------------------------------------------
-  //   $scope.emailVolunteer = function() {
-  //     console.log("hi");
-  //     var jobInfo = "";
-  //     $scope.job.slots.forEach(function(slotID) {
-  //       Slot.get({id: slotID}).$promise.then(function(slot) {
-  //         Job.get({id: slot.jobID}, function(job){
-  //           $scope.volunteer.locations.forEach(function (location) {
-  //             if (location.slotID == slotID) {
-  //               Location.get({id: location.locationID}, function (location2) {
-  //                 slot.location = location2.name;
-  //                 console.log("this is the location: " + slot.location);
-  //                 jobInfo += "Job Title: " + job.title + "%0D%0AStart Time: " + $scope.parseTime(slot.start) + "%0D%0AEnd Time: " + $scope.parseTime(slot.end) + "%0D%0ALocation: " + slot.location + "%0D%0A%0D%0A";
-  //               })
-  //             }
-  //           });
-  //         });
-  //       }, function(error) {
-  //         console.log("ERROR");
-  //       });
-  //     });
-  //
-  //     console.log("what is $scope.volunteer? " + jobInfo);
-  //     setTimeout(function() {
-  //       sendEmail({
-  //         to: $scope.volunteer.email,
-  //         subject: "Volunteer Information for Odyssey of the Mind",
-  //         message: "Dear " + $scope.volunteer.firstName + "," + "%0D%0A%0D%0A" + "Thank you for your participation in this event! Our records show your team of interest is "
-  //         + $scope.volunteer.childTeam.substring(1) + ".%0D%0A%0D%0A"
-  //         + "You have been assigned to the following:%0D%0A%0D%0A"
-  //         + jobInfo + "You can log in to see your schedule at http://localhost:9000/ using the email \"peter@example.com\" and the password \"peter\".%0D%0A%0D%0ASincerely,%0D%0A%0D%0AOdyssey of the Mind"
-  //
-  //       });
-  //     }, 1000);
-  //
-  //   };
+    //=============Email Fcts for Multiple Volunteers===========================
+
+    // send email to all volunteers
+    $scope.sendEmails = function(volunteers){
+      console.log("hi");
+      var str = 'http://mail.google.com/mail/?view=cm&fs=1'+
+      '&to=' + $scope.schedule.unassigned.to +
+      '&su=' + $scope.schedule.unassigned.subject +
+      '&body=' + $scope.schedule.unassigned.message +
+      '&ui=1';
+      $window.open(str);
+    };
+    //-----------------------------------------------------------
+    $scope.emailAllVolunteers = function() {
+      var emailList = "";
+    //  var volunteer = null;
+      $scope.schedule.unassigned.forEach(function(index){
+        //volunteer = $scope.schedule.unassigned[index];
+        emailList += $scope.schedule.unassigned[index].email + ","
+      });
+      setTimeout(function() {
+        sendEmails({
+          to: emailList,
+          subject: "Volunteer Information for Odyssey of the Mind",
+          message: "Dear Volunteer, %0D%0A%0D%0AThank you for your participation in this event!%0D%0A%0D%0AYou can log in to see your schedule at http://localhost:9000/ using the email \"peter@example.com\" and the password \"peter\".%0D%0A%0D%0ASincerely,%0D%0A%0D%0AOdyssey of the Mind"
+        });
+      }, 1000);
+    };
+
+
+  //  =============Email Fcts for Single Volunteer=================
+    $scope.sendEmail = function(volunteers){
+      console.log("here");
+      var str = 'http://mail.google.com/mail/?view=cm&fs=1'+
+      '&to=' + volunteers.to +
+      '&su=' + volunteers.subject +
+      '&body=' + volunteer.message +
+      '&ui=1';
+      $window.open(str);
+    };
+
+    //------------------------------------------------
+    $scope.emailVolunteer = function() {
+      console.log("hi");
+      var jobInfo = "";
+      $scope.job.slots.forEach(function(slotID) {
+        Slot.get({id: slotID}).$promise.then(function(slot) {
+          Job.get({id: slot.jobID}, function(job){
+            $scope.volunteer.locations.forEach(function (location) {
+              if (location.slotID == slotID) {
+                Location.get({id: location.locationID}, function (location2) {
+                  slot.location = location2.name;
+                  console.log("this is the location: " + slot.location);
+                  jobInfo += "Job Title: " + job.title + "%0D%0AStart Time: " + $scope.parseTime(slot.start) + "%0D%0AEnd Time: " + $scope.parseTime(slot.end) + "%0D%0ALocation: " + slot.location + "%0D%0A%0D%0A";
+                })
+              }
+            });
+          });
+        }, function(error) {
+          console.log("ERROR");
+        });
+      });
+
+      console.log("what is $scope.volunteer? " + jobInfo);
+      setTimeout(function() {
+        sendEmail({
+          to: $scope.volunteer.email,
+          subject: "Volunteer Information for Odyssey of the Mind",
+          message: "Dear " + $scope.volunteer.firstName + "," + "%0D%0A%0D%0A" + "Thank you for your participation in this event! Our records show your team of interest is "
+          + $scope.volunteer.childTeam.substring(1) + ".%0D%0A%0D%0A"
+          + "You have been assigned to the following:%0D%0A%0D%0A"
+          + jobInfo + "You can log in to see your schedule at http://localhost:9000/ using the email \"peter@example.com\" and the password \"peter\".%0D%0A%0D%0ASincerely,%0D%0A%0D%0AOdyssey of the Mind"
+
+        });
+      }, 1000);
+
+    };
   });
