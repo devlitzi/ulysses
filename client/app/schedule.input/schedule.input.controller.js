@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ulyssesApp')
-  .controller('ScheduleInputCtrl', function ($scope, papa, $state) {
+  .controller('ScheduleInputCtrl', function ($scope, papa, $state, $window) {
     $scope.schedule = null;
     $scope.teamCSV = null;
     $scope.volunteerCSV = null;
@@ -170,12 +170,17 @@ angular.module('ulyssesApp')
     $scope.emailAllVolunteers = function() {
       var emailList = "";
     //  var volunteer = null;
-      $scope.schedule.unassigned.forEach(function(index){
+      $scope.schedule.unassigned.forEach(function(element, index, array){
+        console.log("index: " + index);
+        //console.log("unassigned: " + array);
+        console.log("element: " + element.email);
         //volunteer = $scope.schedule.unassigned[index];
-        emailList += $scope.schedule.unassigned[index].email + ","
+        emailList += array[index].email + ","
+
       });
+      console.log(emailList);
       setTimeout(function() {
-        sendEmails({
+        $scope.sendEmails({
           to: emailList,
           subject: "Volunteer Information for Odyssey of the Mind",
           message: "Dear Volunteer, %0D%0A%0D%0AThank you for your participation in this event!%0D%0A%0D%0AYou can log in to see your schedule at http://localhost:9000/ using the email \"peter@example.com\" and the password \"peter\".%0D%0A%0D%0ASincerely,%0D%0A%0D%0AOdyssey of the Mind"
@@ -230,5 +235,5 @@ angular.module('ulyssesApp')
         });
       }, 1000);
 
-    };
+   };
   });
