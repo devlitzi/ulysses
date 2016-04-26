@@ -148,11 +148,42 @@ angular.module('ulyssesApp')
 
       return start.format('h:mma') + ' to ' + end.format('h:mma');
     };
+
+    //===================All Volunteer Array====================================
+    $scope.createallVolunteerArray = function(){
+
+      //---------Unassigned portion of volunteers-------------------
+      $scope.schedule.unassigned.forEach(function(element, index, array){
+        console.log("index: " + index);
+        //console.log("unassigned: " + array);
+        console.log("element: " + element.email);
+        //volunteer = $scope.schedule.unassigned[index];
+        $scope.allVolunteers += array[index];
+      });
+
+      //--------------Assigned portion of volunteers----------------
+      $scope.schedule.jobs.forEach(function(element, index, array){
+
+        element.slots.forEach(function(element, index, array){
+
+          element.assigned.forEach(function(element, index, array){
+
+$scope.allVolunteers += array[index];
+
+            });
+          });
+        });
+
+console.log("All Volunteers: " + $scope.allVolunteers);
+    };
+
+
     // $scope.teamFix = function(){
     //   forEach(volunteer in $scope.schedule.unassigned){
     //
     //   }
     // }
+
 
     //=============Email Fcts for Multiple Volunteers===========================
 
@@ -208,23 +239,25 @@ angular.module('ulyssesApp')
     $scope.emailVolunteer = function() {
       console.log("hi");
       var jobInfo = "";
-      $scope.job.slots.forEach(function(slotID) {
-        Slot.get({id: slotID}).$promise.then(function(slot) {
-          Job.get({id: slot.jobID}, function(job){
-            $scope.volunteer.locations.forEach(function (location) {
-              if (location.slotID == slotID) {
-                Location.get({id: location.locationID}, function (location2) {
-                  slot.location = location2.name;
-                  console.log("this is the location: " + slot.location);
-                  jobInfo += "Job Title: " + job.title + "%0D%0AStart Time: " + $scope.parseTime(slot.start) + "%0D%0AEnd Time: " + $scope.parseTime(slot.end) + "%0D%0ALocation: " + slot.location + "%0D%0A%0D%0A";
-                })
-              }
-            });
-          });
-        }, function(error) {
-          console.log("ERROR");
-        });
-      });
+      // $scope.job.slots.forEach(function(slotID) {
+      //   Slot.get({id: slotID}).$promise.then(function(slot) {
+      //     Job.get({id: slot.jobID}, function(job){
+      //       $scope.volunteer.locations.forEach(function (location) {
+      //         if (location.slotID == slotID) {
+      //           Location.get({id: location.locationID}, function (location2) {
+      //             slot.location = location2.name;
+      //             console.log("this is the location: " + slot.location);
+      //             jobInfo += "Job Title: " + job.title + "%0D%0AStart Time: " + $scope.parseTime(slot.start) + "%0D%0AEnd Time: " + $scope.parseTime(slot.end) + "%0D%0ALocation: " + slot.location + "%0D%0A%0D%0A";
+      //           })
+      //         }
+      //       });
+      //     });
+      //   }, function(error) {
+      //     console.log("ERROR");
+      //   });
+      // });
+
+
 
       console.log("what is $scope.volunteer? " + jobInfo);
       setTimeout(function() {
