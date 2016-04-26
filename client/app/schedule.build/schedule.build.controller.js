@@ -3,6 +3,7 @@
 angular.module('ulyssesApp')
   .controller('ScheduleBuildCtrl', function($scope) {
     $scope.schedule = null;
+    $scope.blindDate = false;
 
     $scope.$parent.schedule.$promise.then(function(schedule) {
       $scope.schedule = schedule;
@@ -22,5 +23,10 @@ angular.module('ulyssesApp')
 
     $scope.removeSlot = function(job, index) {
       job.slots.splice(index, 1);
+    };
+
+    $scope.blindify = function() {
+      console.log("blind date?" + $scope.blindDate);
+      $scope.blindDate = !$scope.blindDate;
     };
   });
