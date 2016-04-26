@@ -157,17 +157,7 @@ angular.module('ulyssesApp')
     //=============Email Fcts for Multiple Volunteers===========================
 
     // send email to all volunteers
-    $scope.sendEmails = function(volunteers){
-      console.log("hi");
-      var str = 'http://mail.google.com/mail/?view=cm&fs=1'+
-      '&to=' + $scope.schedule.unassigned.to +
-      '&su=' + $scope.schedule.unassigned.subject +
-      '&body=' + $scope.schedule.unassigned.message +
-      '&ui=1';
-      $window.open(str);
-    };
-    //-----------------------------------------------------------
-    $scope.emailAllVolunteers = function() {
+    $scope.createEmailList = function(){
       var emailList = "";
     //  var volunteer = null;
       $scope.schedule.unassigned.forEach(function(element, index, array){
@@ -178,13 +168,27 @@ angular.module('ulyssesApp')
         emailList += array[index].email + ","
 
       });
-      console.log(emailList);
+      return emailList;
+    };
+
+    $scope.sendEmails = function(volunteers){
+      console.log("hi");
+      var str = 'http://mail.google.com/mail/?view=cm&fs=1'+
+      '&to=' + $scope.createEmailList() +
+      '&su=' + "Volunteer Information for Odyssey of the Mind" +
+      '&body=' + "Dear Volunteer, %0D%0A%0D%0AThank you for your participation in this event!%0D%0A%0D%0AYou can log in to see your schedule at http://localhost:9000/ using the email \"peter@example.com\" and the password \"peter\".%0D%0A%0D%0ASincerely,%0D%0A%0D%0AOdyssey of the Mind" +
+      '&ui=1';
+      $window.open(str);
+    };
+    //-----------------------------------------------------------
+    $scope.emailAllVolunteers = function() {
+    //  console.log(emailList);
       setTimeout(function() {
         $scope.sendEmails({
-          to: emailList,
+          to: $scope.createEmailList(),
           subject: "Volunteer Information for Odyssey of the Mind",
           message: "Dear Volunteer, %0D%0A%0D%0AThank you for your participation in this event!%0D%0A%0D%0AYou can log in to see your schedule at http://localhost:9000/ using the email \"peter@example.com\" and the password \"peter\".%0D%0A%0D%0ASincerely,%0D%0A%0D%0AOdyssey of the Mind"
-        });
+         });
       }, 1000);
     };
 
