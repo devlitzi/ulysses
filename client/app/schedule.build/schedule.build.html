@@ -2,14 +2,14 @@
   <form ng-submit="$parent.continue('schedule.input')">
     <div class="form-group fixedTopBuild">
       <button type="submit" class="btn btn-success" ng-click="schedule.jobs.save({ slots: [] })"> Save and continue</button>
+      <div type="likesDates" class="btn btn-info" ng-click="blindify()">Date</div>
     </div>
 
   <div class="paddingBigBuild">
     <div class="list-group">
-      <div class="list-group-item">
+      <div class="list-group-item" ng-hide="blindDate">
         <div class="form-group">
-          <div type="likesDates" class="btn btn-info" ng-click="blindify()">Date</div>
-          <uib-datepicker ng-hide="blindDate" ng-model="schedule.date"></uib-datepicker>
+          <uib-datepicker ng-model="schedule.date"></uib-datepicker>
         </div>
       </div>
       <div class="list-group-item" ng-repeat="job in schedule.jobs">

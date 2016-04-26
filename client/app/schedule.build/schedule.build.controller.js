@@ -3,7 +3,7 @@
 angular.module('ulyssesApp')
   .controller('ScheduleBuildCtrl', function($scope) {
     $scope.schedule = null;
-    $scope.blindDate = false;
+    $scope.blindDate = true;
 
     $scope.$parent.schedule.$promise.then(function(schedule) {
       $scope.schedule = schedule;
