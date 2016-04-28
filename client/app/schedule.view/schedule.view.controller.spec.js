@@ -5,17 +5,17 @@ describe('Controller: ScheduleViewCtrl', function () {
   // load the controller's module
   beforeEach(module('ulyssesApp'));
 
-  var ScheduleViewCtrl, scope, parentScope, childScope;
+  var ScheduleViewCtrl, ScheduleCtrl, scope, parentScope, childScope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope, $compile) {
     scope = $rootScope.$new();
     ScheduleViewCtrl = $controller('ScheduleViewCtrl', {
-      $scope: scope
+      $scope: scope,
 
-      parentScope = ScheduleCtrl.scope;
-      childScope = ScheduleViewCtrl.scope;
-    });
+      parentScope: ScheduleCtrl.scope,
+      childScope: ScheduleViewCtrl.scope
+    })
   }));
 
   it('should ...', function () {
