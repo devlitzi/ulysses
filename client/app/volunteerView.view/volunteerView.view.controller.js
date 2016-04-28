@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ulyssesApp')
-  .controller('ScheduleViewCtrl', function ($scope) {
+  .controller('VolunteerViewViewCtrl', function ($scope) {
     $scope.hour = 125;
     $scope.schedule = null;
     $scope.timeArray = [];

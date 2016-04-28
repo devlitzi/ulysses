@@ -15,7 +15,7 @@ angular.module('ulyssesApp')
 
     $scope.addSlot = function(job) {
       console.log(date)
-      job.slots.push({Date(2013, 2, 1, 1, 10))});
+      job.slots.push({});
     };
 
     $scope.removeJob = function(index) {

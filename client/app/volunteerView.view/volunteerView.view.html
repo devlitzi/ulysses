@@ -16,14 +16,13 @@
         <i ng-show="{{job.defaultLocation}}">Location: {{job.location}}</i>
         <i ng-hide="{{job.defaultLocation}}">Location in shift.</i>
       </div>
-      
 
 <br>
 <br>
 <br>
 <br>
     <div class="slot-container">
-      <a ng-repeat="slot in job.slots" class="slot" ng-style="calculateSlotPosition(slot)" ui-sref="schedule.edit.assign({ job: job._id, slot: slot._id })">
+      <a ng-repeat="slot in job.slots" class="slot" ng-style="calculateSlotPosition(slot)">
         <div ng-hide="{{job.defaultLocation}}"><u>Location:</u> {{slot.location}}</div>
         <div ng-repeat="volunteer in slot.assigned">
           {{volunteer.name}}  <!-- <span ng-if="volunteer.isJudge" class="judgeJ">J</span> I don't think we need to have the Judge icon on the final page-->
