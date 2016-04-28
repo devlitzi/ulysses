@@ -9,6 +9,7 @@ angular.module('ulyssesApp')
     $scope.unresolvables = 0;
     $scope.detail = null;
     $scope.allVolunteers = [];
+    $scope.constraintsImported = false;
 
     $scope.$parent.schedule.$promise.then(function(schedule) {
       $scope.schedule = schedule;
@@ -104,6 +105,7 @@ angular.module('ulyssesApp')
     };
 
     $scope.addConstraints = function() {
+      if($scope.constraintsImported == false){
       for(var index in $scope.schedule.unassigned){
         var volunteer = $scope.schedule.unassigned[index];
         if (volunteer.childTeam) {
@@ -118,7 +120,13 @@ angular.module('ulyssesApp')
           });
         }
       }
-    };
+      $scope.constraintsImported = true;
+    }
+
+    else{
+      return;
+    }
+  };
 
     var fullName = function(first, last){
       return [first, last].join(" ");
@@ -148,29 +156,52 @@ angular.module('ulyssesApp')
 
       return start.format('h:mma') + ' to ' + end.format('h:mma');
     };
+
+    //===================All Volunteer Array====================================
+    $scope.createallVolunteerArray = function(){
+
+      //---------Unassigned portion of volunteers-------------------
+      $scope.schedule.unassigned.forEach(function(element, index, array){
+        console.log("index: " + index);
+        //console.log("unassigned: " + array);
+        console.log("element: " + element.email);
+        //volunteer = $scope.schedule.unassigned[index];
+        $scope.allVolunteers.splice(index,0,array[index]);
+      });
+console.log("first loop done");
+console.log($scope.allVolunteers.length);
+      //--------------Assigned portion of volunteers----------------
+      $scope.schedule.jobs.forEach(function(element, index, array){
+
+        element.slots.forEach(function(element, index, array){
+
+          element.assigned.forEach(function(element, index, array){
+
+$scope.allVolunteers.splice(index,0,array[index]);
+
+            });
+          });
+        });
+
+console.log("All Volunteers: " + $scope.allVolunteers[99].email);
+console.log($scope.allVolunteers);
+    };
+
+
     // $scope.teamFix = function(){
     //   forEach(volunteer in $scope.schedule.unassigned){
     //
     //   }
     // }
 
+
     //=============Email Fcts for Multiple Volunteers===========================
 
     // send email to all volunteers
-    $scope.sendEmails = function(volunteers){
-      console.log("hi");
-      var str = 'http://mail.google.com/mail/?view=cm&fs=1'+
-      '&to=' + $scope.schedule.unassigned.to +
-      '&su=' + $scope.schedule.unassigned.subject +
-      '&body=' + $scope.schedule.unassigned.message +
-      '&ui=1';
-      $window.open(str);
-    };
-    //-----------------------------------------------------------
-    $scope.emailAllVolunteers = function() {
+    $scope.createEmailList = function(){
       var emailList = "";
     //  var volunteer = null;
-      $scope.schedule.unassigned.forEach(function(element, index, array){
+      $scope.allVolunteers.forEach(function(element, index, array){
         console.log("index: " + index);
         //console.log("unassigned: " + array);
         console.log("element: " + element.email);
@@ -178,13 +209,27 @@ angular.module('ulyssesApp')
         emailList += array[index].email + ","
 
       });
-      console.log(emailList);
+      return emailList;
+    };
+
+    $scope.sendEmails = function(volunteers){
+      console.log("hi");
+      var str = 'http://mail.google.com/mail/?view=cm&fs=1'+
+      '&to=' + $scope.createEmailList() +
+      '&su=' + "Volunteer Information for Odyssey of the Mind" +
+      '&body=' + "Dear Volunteer, %0D%0A%0D%0AThank you for your participation in this event!%0D%0A%0D%0AYou can log in to see your schedule at http://localhost:9000/ using the email \"peter@example.com\" and the password \"peter\".%0D%0A%0D%0ASincerely,%0D%0A%0D%0AOdyssey of the Mind" +
+      '&ui=1';
+      $window.open(str);
+    };
+    //-----------------------------------------------------------
+    $scope.emailAllVolunteers = function() {
+    //  console.log(emailList);
       setTimeout(function() {
         $scope.sendEmails({
-          to: emailList,
+          to: $scope.createEmailList(),
           subject: "Volunteer Information for Odyssey of the Mind",
           message: "Dear Volunteer, %0D%0A%0D%0AThank you for your participation in this event!%0D%0A%0D%0AYou can log in to see your schedule at http://localhost:9000/ using the email \"peter@example.com\" and the password \"peter\".%0D%0A%0D%0ASincerely,%0D%0A%0D%0AOdyssey of the Mind"
-        });
+         });
       }, 1000);
     };
 
@@ -204,23 +249,25 @@ angular.module('ulyssesApp')
     $scope.emailVolunteer = function() {
       console.log("hi");
       var jobInfo = "";
-      $scope.job.slots.forEach(function(slotID) {
-        Slot.get({id: slotID}).$promise.then(function(slot) {
-          Job.get({id: slot.jobID}, function(job){
-            $scope.volunteer.locations.forEach(function (location) {
-              if (location.slotID == slotID) {
-                Location.get({id: location.locationID}, function (location2) {
-                  slot.location = location2.name;
-                  console.log("this is the location: " + slot.location);
-                  jobInfo += "Job Title: " + job.title + "%0D%0AStart Time: " + $scope.parseTime(slot.start) + "%0D%0AEnd Time: " + $scope.parseTime(slot.end) + "%0D%0ALocation: " + slot.location + "%0D%0A%0D%0A";
-                })
-              }
-            });
-          });
-        }, function(error) {
-          console.log("ERROR");
-        });
-      });
+      // $scope.job.slots.forEach(function(slotID) {
+      //   Slot.get({id: slotID}).$promise.then(function(slot) {
+      //     Job.get({id: slot.jobID}, function(job){
+      //       $scope.volunteer.locations.forEach(function (location) {
+      //         if (location.slotID == slotID) {
+      //           Location.get({id: location.locationID}, function (location2) {
+      //             slot.location = location2.name;
+      //             console.log("this is the location: " + slot.location);
+      //             jobInfo += "Job Title: " + job.title + "%0D%0AStart Time: " + $scope.parseTime(slot.start) + "%0D%0AEnd Time: " + $scope.parseTime(slot.end) + "%0D%0ALocation: " + slot.location + "%0D%0A%0D%0A";
+      //           })
+      //         }
+      //       });
+      //     });
+      //   }, function(error) {
+      //     console.log("ERROR");
+      //   });
+      // });
+
+
 
       console.log("what is $scope.volunteer? " + jobInfo);
       setTimeout(function() {
