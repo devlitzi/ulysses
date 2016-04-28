@@ -217,7 +217,7 @@ console.log($scope.allVolunteers);
       var str = 'http://mail.google.com/mail/?view=cm&fs=1'+
       '&to=' + $scope.createEmailList() +
       '&su=' + "Volunteer Information for Odyssey of the Mind" +
-      '&body=' + "Dear Volunteer, %0D%0A%0D%0AThank you for your participation in this event!%0D%0A%0D%0AYou can log in to see your schedule at http://localhost:9000/ using the email \"peter@example.com\" and the password \"peter\".%0D%0A%0D%0ASincerely,%0D%0A%0D%0AOdyssey of the Mind" +
+      '&body=' + "Dear Volunteer, %0D%0A%0D%0AThank you for your participation in this event!%0D%0A%0D%0AYou can log in to see your schedule at http://localhost:9000/ .%0D%0A%0D%0ASincerely,%0D%0A%0D%0AOdyssey of the Mind" +
       '&ui=1';
       $window.open(str);
     };
@@ -228,19 +228,19 @@ console.log($scope.allVolunteers);
         $scope.sendEmails({
           to: $scope.createEmailList(),
           subject: "Volunteer Information for Odyssey of the Mind",
-          message: "Dear Volunteer, %0D%0A%0D%0AThank you for your participation in this event!%0D%0A%0D%0AYou can log in to see your schedule at http://localhost:9000/ using the email \"peter@example.com\" and the password \"peter\".%0D%0A%0D%0ASincerely,%0D%0A%0D%0AOdyssey of the Mind"
+          message: "Dear Volunteer, %0D%0A%0D%0AThank you for your participation in this event!%0D%0A%0D%0AYou can log in to see your schedule at http://localhost:9000/ .%0D%0A%0D%0ASincerely,%0D%0A%0D%0AOdyssey of the Mind"
          });
       }, 1000);
     };
 
 
   //  =============Email Fcts for Single Volunteer=================
-    $scope.sendEmail = function(volunteers){
+    $scope.sendEmail = function(email, name){
       console.log("here");
       var str = 'http://mail.google.com/mail/?view=cm&fs=1'+
-      '&to=' + volunteers.to +
-      '&su=' + volunteers.subject +
-      '&body=' + volunteer.message +
+      '&to=' + email +
+      '&su=' + "Volunteer Information for Odyssey of the Mind" +
+      '&body=' + "Dear " +  name + ", %0D%0A%0D%0AThank you for your participation in this event!%0D%0A%0D%0AYou can log in to see your schedule at http://localhost:9000/ using the email " + email + ".%0D%0A%0D%0ASincerely,%0D%0A%0D%0AOdyssey of the Mind" +
       '&ui=1';
       $window.open(str);
     };
