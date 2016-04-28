@@ -158,9 +158,10 @@ angular.module('ulyssesApp')
         //console.log("unassigned: " + array);
         console.log("element: " + element.email);
         //volunteer = $scope.schedule.unassigned[index];
-        $scope.allVolunteers += array[index];
+        $scope.allVolunteers.splice(index,0,array[index]);
       });
-
+console.log("first loop done");
+console.log($scope.allVolunteers.length);
       //--------------Assigned portion of volunteers----------------
       $scope.schedule.jobs.forEach(function(element, index, array){
 
@@ -168,13 +169,14 @@ angular.module('ulyssesApp')
 
           element.assigned.forEach(function(element, index, array){
 
-$scope.allVolunteers += array[index];
+$scope.allVolunteers.splice(index,0,array[index]);
 
             });
           });
         });
 
-console.log("All Volunteers: " + $scope.allVolunteers);
+console.log("All Volunteers: " + $scope.allVolunteers[99].email);
+console.log($scope.allVolunteers);
     };
 
 
