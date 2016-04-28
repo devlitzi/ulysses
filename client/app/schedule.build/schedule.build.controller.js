@@ -11,10 +11,12 @@ angular.module('ulyssesApp')
 
     $scope.addJob = function() {
       $scope.schedule.jobs.push({ slots: [{}] });
+      $scope.setDate();
     };
 
     $scope.addSlot = function(job) {
       job.slots.push({});
+      $scope.setDate();
     };
 
     $scope.removeJob = function(index) {
@@ -26,7 +28,23 @@ angular.module('ulyssesApp')
     };
 
     $scope.blindify = function() {
-      console.log("blind date?" + $scope.blindDate);
+      //console.log("blind date?" + $scope.blindDate);
       $scope.blindDate = !$scope.blindDate;
+      $scope.setDate();
+    };
+
+    $scope.setDate = function() {
+      var ourDate = $scope.schedule.date;
+      var no = new Date(ourDate);
+      $scope.schedule.jobs.forEach(function(job){
+        job.slots.forEach(function(slot){
+          slot.start = new Date(slot.start);
+          slot.end = new Date(slot.end);
+          slot.start.setFullYear(no.getFullYear(), no.getMonth(), no.getDate());
+          slot.end.setFullYear(no.getFullYear(), no.getMonth(), no.getDate());
+          //console.log("start: " + slot.start);
+          //console.log("end: " + slot.end);
+      })
+    })
     };
   });
