@@ -9,6 +9,7 @@ angular.module('ulyssesApp')
     $scope.unresolvables = 0;
     $scope.detail = null;
     $scope.allVolunteers = [];
+    $scope.constraintsImported = false;
 
     $scope.$parent.schedule.$promise.then(function(schedule) {
       $scope.schedule = schedule;
@@ -104,6 +105,7 @@ angular.module('ulyssesApp')
     };
 
     $scope.addConstraints = function() {
+      if($scope.constraintsImported == false){
       for(var index in $scope.schedule.unassigned){
         var volunteer = $scope.schedule.unassigned[index];
         if (volunteer.childTeam) {
@@ -118,7 +120,13 @@ angular.module('ulyssesApp')
           });
         }
       }
-    };
+      $scope.constraintsImported = true;
+    }
+
+    else{
+      return;
+    }
+  };
 
     var fullName = function(first, last){
       return [first, last].join(" ");
@@ -193,7 +201,7 @@ console.log($scope.allVolunteers);
     $scope.createEmailList = function(){
       var emailList = "";
     //  var volunteer = null;
-      $scope.schedule.unassigned.forEach(function(element, index, array){
+      $scope.allVolunteers.forEach(function(element, index, array){
         console.log("index: " + index);
         //console.log("unassigned: " + array);
         console.log("element: " + element.email);
