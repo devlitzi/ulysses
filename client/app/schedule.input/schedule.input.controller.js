@@ -186,6 +186,9 @@ $scope.allVolunteers.splice(index,0,array[index]);
 console.log("All Volunteers: " + $scope.allVolunteers[99].email);
 console.log($scope.allVolunteers);
     };
+    
+
+
 
 
     // $scope.teamFix = function(){
@@ -225,6 +228,7 @@ console.log($scope.allVolunteers);
       return emailList;
     };
     $scope.sendEmailsUnassigned = function(volunteers){
+      if($scope.createEmailListUnassigned().length != 0){
       console.log("hi");
       var str = 'http://mail.google.com/mail/?view=cm&fs=1'+
       '&to=' + $scope.createEmailListUnassigned() +
@@ -232,16 +236,25 @@ console.log($scope.allVolunteers);
       '&body=' + "Dear Volunteer, %0D%0A%0D%0AThank you for your willingness to volunteer, unfortunately we have more volunteers than expected and we have no need for your help this year. Thank you for your interest!%0D%0A%0D%0AYou can log in to see your schedule at http://localhost:9000/ .%0D%0A%0D%0ASincerely,%0D%0A%0D%0AOdyssey of the Mind" +
       '&ui=1';
       $window.open(str);
+    }
+    else{
+      $window.alert("There are no unassigned volunteers to email! All volunteers are assigned or you have not imported them.")
+    }
     };
 
     $scope.sendEmails = function(volunteers){
       console.log("hi");
+      if($scope.createEmailList().length != 0){
       var str = 'http://mail.google.com/mail/?view=cm&fs=1'+
       '&to=' + $scope.createEmailList() +
       '&su=' + "Volunteer Information for Odyssey of the Mind" +
       '&body=' + "Dear Volunteer, %0D%0A%0D%0AThank you for your participation in this event!%0D%0A%0D%0AYou can log in to see your schedule at http://localhost:9000/ .%0D%0A%0D%0ASincerely,%0D%0A%0D%0AOdyssey of the Mind" +
       '&ui=1';
       $window.open(str);
+    }
+    else{
+      $window.alert("There are no volunteers to email! Import a volunteer CSV to begin scheduling.");
+    }
     };
 
 
