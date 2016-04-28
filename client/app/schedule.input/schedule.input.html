@@ -72,7 +72,13 @@
   <div class="panel panel-default volunteer-container">
     <div class="panel-heading">Email all volunteers:</div>
     <div class="panel-body">
-      <button ng-click="emailAllVolunteers()" type="button" class="btn btn-success">Email Volunteers</button>
+      <button ng-click="sendEmails()" type="button" class="btn btn-success">Email Volunteers</button>
+    </div>
+  </div>
+  <div class="panel panel-default volunteer-container">
+    <div class="panel-heading">Email all unassigned volunteers:</div>
+    <div class="panel-body">
+      <button ng-click="sendEmailsUnassigned()" type="button" class="btn btn-success">Email Unassigned Volunteers</button>
     </div>
   </div>
 
@@ -108,7 +114,7 @@
         <div class="form-group">
           <label>Email address</label>
           <input type="email" class="form-control" ng-model="detail.email" /></br>
-          <button ng-click="$scope.sendEmail()" type="button" class="btn btn-success">Email Volunteer</button>
+          <button ng-click="sendEmail(detail.email, detail.name)" type="button" class="btn btn-success">Email Volunteer</button>
         </div>
 
         <div class="form-group">
