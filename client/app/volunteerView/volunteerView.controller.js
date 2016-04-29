@@ -67,6 +67,3 @@ angular.module('ulyssesApp')
 
 
   });
-
-
-  });
