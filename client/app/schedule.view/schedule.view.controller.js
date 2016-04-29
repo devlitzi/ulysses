@@ -10,7 +10,9 @@ angular.module('ulyssesApp')
 
     $scope.$parent.schedule.$promise.then(function(schedule) {
       $scope.schedule = schedule;
+      console.log($scope.schedule);
     });
+
 
     $scope.populateTimeArray = function(date){
       var earlyTime = moment($scope.earlyTime);
@@ -58,18 +60,6 @@ angular.module('ulyssesApp')
         borderColor: $scope.borderColorCode(slot)
       };
     }
-
-
-    // $scope.fixDiv = function() {
-    //     if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-    //         document.getElementById("myDiv").className = "fixedTop";
-    //     } else {
-    //         document.getElementById("myDiv").className = "job-header";
-    //     }
-    // }
-    // window.onscroll = function() {
-    //   $scope.fixDiv();
-    // }
 
 
   });

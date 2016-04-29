@@ -22,8 +22,16 @@
             </li>
           </ul>
         </li>
-        <li >
-          <a href="/volunteerView">Volunteer Schedule</a>
+        <li uib-dropdown>
+          <a class="dropdown-toggle" href="" uib-dropdown-toggle>
+            Volunteer Schedule
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" uib-dropdown-menu>
+            <li ng-repeat="schedule in schedules">
+              <a ui-sref="VolunteerView({ id: schedule._id })">{{ schedule.name }}</a>
+            </li>
+          </ul>
         </li>
         <li >
           <a href="/map">Map</a>

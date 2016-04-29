@@ -28,7 +28,7 @@ angular.module('ulyssesApp')
     };
 
     $scope.blindify = function() {
-      //console.log("blind date?" + $scope.blindDate);
+      console.log("blind date?" + $scope.blindDate);
       $scope.blindDate = !$scope.blindDate;
       $scope.setDate();
     };
