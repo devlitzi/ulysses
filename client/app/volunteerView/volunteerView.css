@@ -10,11 +10,12 @@
   position: relative;
 }
 
-.slot {
+.slotView {
   position: absolute;
   border-width: 1px;
   border-style: solid;
   width: 100%;
+  text-color: white;
 }
 
 .slot:hover {
@@ -27,13 +28,18 @@
 
 .paddingVolunteer {
   padding-top: 100px;
-  padding-left: 100px;
+  text-align: center;
+  margin: 15 auto;
+  width: auto;
+
+
 
 }
 
 .time-block {
   height: 62px;
   padding-top: 15px;
+  padding-right: 15px;
 }
 
 .crouching-tiger-hidden-label2{

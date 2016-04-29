@@ -15,6 +15,7 @@
   border-width: 1px;
   border-style: solid;
   width: 100%;
+  overflow-y: hidden;
 }
 
 .slot:hover {
@@ -72,6 +73,8 @@
 
 .hideName {
   white-space: nowrap;
-  overflow: hidden;
+  overflow-y: hidden;
   text-overflow: ellipsis;
+  width: auto;
+  height: auto;
 }
