@@ -7,7 +7,12 @@
       <img src="assets/images/raccoon.jpg">
     </div>
     <br>
-    <div type="makesSchedule" class="btn btn-success" ng-click="makesSchedule()">New Schedule</div>
+    <form class="form-inline" role="form" style="padding: 8px; margin-left: 30px">
+      <div class="form-group">
+        <input class="form-control" ng-model="scheduleName" placeholder="New Schedule Name">
+      </div>
+      <button type="submit" class="btn btn-success" ng-click="addSchedule()">New Schedule</button>
+    </form>
     <h2>List of Schedules:</h2>
     <div ng-repeat="schedule in schedules">
       {{ schedule.name }}
