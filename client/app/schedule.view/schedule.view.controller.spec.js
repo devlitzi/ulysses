@@ -5,7 +5,7 @@ describe('Controller: ScheduleViewCtrl', function () {
   // load the controller's module
   beforeEach(module('ulyssesApp'));
 
-  var ScheduleViewCtrl, ScheduleCtrl, scope, parentScope, childScope;
+  var ScheduleViewCtrl, scope, parentScope, childScope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope, $compile) {

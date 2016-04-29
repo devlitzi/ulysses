@@ -1,9 +1,17 @@
 <div class="paddingBig">
 <header class="hero-unit" id="banner">
   <div class="container">
-    <h1>Ulysses</h1>
-    <p class="lead">*Scheduler of the Mind*</p>
-    <img src="assets/images/raccoon.jpg">
+    <div>
+      <h1>Ulysses</h1>
+      <p class="lead">*Scheduler of the Mind*</p>
+      <img src="assets/images/raccoon.jpg">
+    </div>
+    <br>
+    <div type="makesSchedule" class="btn btn-success" ng-click="makesSchedule()">New Schedule</div>
+    <h2>List of Schedules:</h2>
+    <div ng-repeat="schedule in schedules">
+      {{ schedule.name }}
+    </div>
   </div>
 </header>
 </div>

@@ -1,11 +1,12 @@
 'use strict';
 
-(function() {
-
-class MainController {
-
-}
-
 angular.module('ulyssesApp')
-  .controller('MainController', MainController);
-})();
+  .controller('MainController', function ($scope, $state, Schedule, $stateParams) {
+    $scope.schedule = Schedule.get($stateParams);
+
+    $scope.makesSchedule = function(){
+  
+    };
+
+  });
+
