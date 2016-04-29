@@ -15,16 +15,19 @@
   border-width: 1px;
   border-style: solid;
   width: 100%;
-  overflow-y: hidden;
+  overflow-y: auto;
+  text-align: center;
 }
 
 .slot:hover {
   text-decoration: none;
+
 }
 
 .job-header {
   border-bottom: 1px solid black;
   border-top: 1px solid black;
+  text-align: center;
 }
 
 .paddingBig2 {
@@ -77,4 +80,13 @@
   text-overflow: ellipsis;
   width: auto;
   height: auto;
+}
+
+#ex3::-webkit-scrollbar{
+  width:5px;
+  background-color: #dff0d8;
+}
+#ex3::-webkit-scrollbar-thumb{
+  background-color: green;
+  border-radius:10px;
 }

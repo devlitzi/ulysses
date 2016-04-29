@@ -186,7 +186,7 @@ $scope.allVolunteers.splice(index,0,array[index]);
 console.log("All Volunteers: " + $scope.allVolunteers[99].email);
 console.log($scope.allVolunteers);
     };
-    
+
 
 
 

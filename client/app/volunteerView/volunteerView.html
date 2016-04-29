@@ -21,7 +21,7 @@
           </div>
 
         <div class="slot-container">
-          <div ng-repeat="slot in job.slots" class="slotView" ng-style="calculateSlotPosition(slot)">
+          <div ng-repeat="slot in job.slots" class="slotView" ng-style="calculateSlotPosition(slot)" id="ex3">
             <div ng-hide="{{job.defaultLocation}}"><u>Location:</u> {{slot.location}}</div>
             <div class="hideName" ng-repeat="volunteer in slot.assigned"> {{volunteer.name}} </div>
           </div>
