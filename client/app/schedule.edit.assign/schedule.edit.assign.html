@@ -5,7 +5,7 @@
     </div>
 
     <br />
-    
+
     <div class="alert alert-info" ng-hide="schedule.unassigned.length">
       No unassigned volunteers!
     </div>
@@ -19,7 +19,7 @@
   </div>
 
   <div class="col-sm-6">
-    <div class="list-group Fixed">
+    <div class="list-group Fixed" id="ex1">
       <h3><span class="list-group-item smallertext" ng-class="{ 'list-group-item-danger': slot.assigned.length == 0, 'list-group-item-warning': slot.assigned.length != 0 && slot.assigned.length < slot.positions, 'list-group-item-success': slot.assigned.length >= slot.positions }">{{job.name}}: {{timeConvert(slot)}}</span></h3>
       <a class="list-group-item" ng-click="unassign(volunteer, slot)" ng-repeat="volunteer in slot.assigned track by $index">
         {{ volunteer.name }}
