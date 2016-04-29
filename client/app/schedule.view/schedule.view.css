@@ -69,3 +69,9 @@
   border-collapse: collapse;
   display: table;
 }
+
+.hideName {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
