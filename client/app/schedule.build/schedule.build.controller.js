@@ -20,7 +20,7 @@ angular.module('ulyssesApp')
     };
 
     $scope.removeJob = function(index) {
-      $scope.clearJob;
+      $scope.clearJob();
       $scope.schedule.jobs.splice(index, 1);
     };
 
@@ -51,6 +51,8 @@ angular.module('ulyssesApp')
 
     //Removes all assigned people.
     $scope.clearJob = function() {
+      for(var i = 0; i<$scope.schedule.jobs.length; i++){
+        var job = $scope.schedule.jobs[i];
         for(var j = 0; j<job.slots.length; j++){
           var slot = job.slots[j];
           //console.log(slot.start);
@@ -63,5 +65,6 @@ angular.module('ulyssesApp')
           slot.assigned = [];
         }
       }
+    }
 
   });

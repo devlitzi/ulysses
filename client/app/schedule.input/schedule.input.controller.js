@@ -47,12 +47,12 @@ angular.module('ulyssesApp')
         }
       }
       unassigned.splice(unassigned.indexOf(volunteer), 1);
-    }
-  };
+    };
+  }
 
     $scope.process = function(data) {
       if ($scope.schedule.unassigned <= 0){
-        console.log('first one');
+        console.log("first one")
         if ($scope.volunteerCSV) {
           papa.parse($scope.volunteerCSV, {
             header: true,
@@ -75,7 +75,7 @@ angular.module('ulyssesApp')
     };
 
     $scope.processTeams = function(data) {
-      console.log('got to processTeams');
+      console.log("got to processTeams");
 
       var divisions = {
         Primary: 0, //primary listed as 1's in csv? Error?
@@ -134,19 +134,19 @@ angular.module('ulyssesApp')
 
     var birthVolunteer = function(row) {
       return {
-        name: fullName(row['First name'], row['Last name']),
-        email: row['E-mail'],
-        phone: row['phone'],
-        username: row['username'],
-        password: row['password'],
-        childTeam: row['child_team'],
+        name: fullName(row["First name"], row["Last name"]),
+        email: row["E-mail"],
+        phone: row["phone"],
+        username: row["username"],
+        password: row["password"],
+        childTeam: row["child_team"],
         constraints: [],
-        comments: row['comment'],
-        shirt: row['T-shirt'],
+        comments: row["comment"],
+        shirt: row["T-shirt"],
         positions: [],
-        isJudge: row[''] == 'AS_JUDGE',
-        preference1: row['Job Preference #1'],
-        preference2: row['Job Preference #2']
+        isJudge: row[""] == "AS_JUDGE",
+        preference1: row["Job Preference #1"],
+        preference2: row["Job Preference #2"]
       };
     };
 
@@ -162,9 +162,9 @@ angular.module('ulyssesApp')
 
       //---------Unassigned portion of volunteers-------------------
       $scope.schedule.unassigned.forEach(function(element, index, array){
-        console.log('index: ' + index);
+        console.log("index: " + index);
         //console.log("unassigned: " + array);
-        console.log('element: ' + element.email);
+        console.log("element: " + element.email);
         //volunteer = $scope.schedule.unassigned[index];
         $scope.allVolunteers.splice(index,0,array[index]);
       });
@@ -183,7 +183,7 @@ $scope.allVolunteers.splice(index,0,array[index]);
           });
         });
 
-console.log('All Volunteers: ' + $scope.allVolunteers[99].email);
+console.log("All Volunteers: " + $scope.allVolunteers[99].email);
 console.log($scope.allVolunteers);
     };
 
@@ -202,34 +202,34 @@ console.log($scope.allVolunteers);
 
     // send email to all volunteers
     $scope.createEmailList = function(){
-      var emailList = '';
+      var emailList = "";
     //  var volunteer = null;
       $scope.allVolunteers.forEach(function(element, index, array){
-        console.log('index: ' + index);
+        console.log("index: " + index);
         //console.log("unassigned: " + array);
-        console.log('element: ' + element.email);
+        console.log("element: " + element.email);
         //volunteer = $scope.schedule.unassigned[index];
-        emailList += array[index].email + ','
+        emailList += array[index].email + ","
 
       });
       return emailList;
     };
     $scope.createEmailListUnassigned = function(){
-      var emailList = '';
+      var emailList = "";
     //  var volunteer = null;
       $scope.schedule.unassigned.forEach(function(element, index, array){
-        console.log('index: ' + index);
+        console.log("index: " + index);
         //console.log("unassigned: " + array);
-        console.log('element: ' + element.email);
+        console.log("element: " + element.email);
         //volunteer = $scope.schedule.unassigned[index];
-        emailList += array[index].email + ','
+        emailList += array[index].email + ","
 
       });
       return emailList;
     };
     $scope.sendEmailsUnassigned = function(volunteers){
       if($scope.createEmailListUnassigned().length != 0){
-      console.log('hi');
+      console.log("hi");
       var str = 'http://mail.google.com/mail/?view=cm&fs=1'+
       '&to=' + $scope.createEmailListUnassigned() +
       '&su=' + "Volunteer Information for Odyssey of the Mind" +
@@ -238,14 +238,14 @@ console.log($scope.allVolunteers);
       $window.open(str);
     }
     else{
-      $window.alert('There are no unassigned volunteers to email! All volunteers are assigned or you have not imported them.')
+      $window.alert("There are no unassigned volunteers to email! All volunteers are assigned or you have not imported them.")
     }
     };
 
     $scope.sendEmails = function(volunteers){
-      console.log('hi');
+      console.log("hi");
       if($scope.createEmailList().length != 0){
-      var str = "http://mail.google.com/mail/?view=cm&fs=1"+
+      var str = 'http://mail.google.com/mail/?view=cm&fs=1'+
       '&to=' + $scope.createEmailList() +
       '&su=' + "Volunteer Information for Odyssey of the Mind" +
       '&body=' + "Dear Volunteer, %0D%0A%0D%0AThank you for your participation in this event!%0D%0A%0D%0AYou can log in to see your schedule at http://localhost:9000/ .%0D%0A%0D%0ASincerely,%0D%0A%0D%0AOdyssey of the Mind" +
@@ -260,7 +260,7 @@ console.log($scope.allVolunteers);
 
   //  =============Email Fcts for Single Volunteer=================
     $scope.sendEmail = function(email, name){
-      console.log('here');
+      console.log("here");
       var str = 'http://mail.google.com/mail/?view=cm&fs=1'+
       '&to=' + email +
       '&su=' + "Volunteer Information for Odyssey of the Mind" +
