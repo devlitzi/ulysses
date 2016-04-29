@@ -9,7 +9,6 @@ class NavbarController {
     this.isAdmin = Auth.isAdmin;
     this.hasRole = Auth.hasRole;
     this.getCurrentUser = Auth.getCurrentUser;
-
     $scope.schedules = Schedule.query();
   }
 }

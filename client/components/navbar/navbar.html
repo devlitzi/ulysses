@@ -22,7 +22,7 @@
             </li>
           </ul>
         </li>
-        <li uib-dropdown>
+        <li ng-show="nav.hasRole('volunteer')" uib-dropdown>
           <a class="dropdown-toggle" href="" uib-dropdown-toggle>
             Volunteer Schedule
             <span class="caret"></span>
@@ -33,7 +33,7 @@
             </li>
           </ul>
         </li>
-        <li >
+        <li ng-show="nav.hasRole('volunteer')">
           <a href="/map">Map</a>
         </li>
         <li ng-show="nav.hasRole('admin')" ui-sref-active="active">
