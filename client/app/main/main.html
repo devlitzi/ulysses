@@ -6,8 +6,9 @@
       <p class="lead">*Scheduler of the Mind*</p>
       <img src="assets/images/raccoon.jpg">
     </div>
+    <br>
     <div type="makesSchedule" class="btn btn-success" ng-click="makesSchedule()">New Schedule</div>
-    <div>List of Schdules</div>
+    <h2>List of Schedules:</h2>
     <div ng-repeat="schedule in schedules">
       {{ schedule.name }}
     </div>
