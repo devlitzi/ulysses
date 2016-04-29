@@ -20,6 +20,7 @@ angular.module('ulyssesApp')
     };
 
     $scope.removeJob = function(index) {
+      $scope.clearJob();
       $scope.schedule.jobs.splice(index, 1);
     };
 
@@ -47,4 +48,23 @@ angular.module('ulyssesApp')
       })
     })
     };
+
+    //Removes all assigned people.
+    $scope.clearJob = function() {
+      for(var i = 0; i<$scope.schedule.jobs.length; i++){
+        var job = $scope.schedule.jobs[i];
+        for(var j = 0; j<job.slots.length; j++){
+          var slot = job.slots[j];
+          //console.log(slot.start);
+          for(var k = 0; k<slot.assigned.length; k++){
+            var vol = slot.assigned[k];
+            var volThing = slot.assigned.indexOf(vol)
+            //console.log(vol.name);
+            $scope.schedule.unassigned.push(vol);
+          }
+          slot.assigned = [];
+        }
+      }
+    }
+
   });

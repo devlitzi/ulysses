@@ -22,11 +22,12 @@
 <br>
 <br>
     <div class="slot-container">
-      <a ng-repeat="slot in job.slots" class="slot" ng-style="calculateSlotPosition(slot)" ui-sref="schedule.edit.assign({ job: job._id, slot: slot._id })">
-        <div ng-hide="{{job.defaultLocation}}"><u>Location:</u> {{slot.location}}</div>
-        <div ng-repeat="volunteer in slot.assigned">
-          {{volunteer.name}}  <!-- <span ng-if="volunteer.isJudge" class="judgeJ">J</span> I don't think we need to have the Judge icon on the final page-->
-        </div>
+      <a ng-repeat="slot in job.slots" class="slot" ng-style="calculateSlotPosition(slot)" ui-sref="schedule.edit.assign({ job: job._id, slot: slot._id })" id="ex3">
+          <div ng-hide="{{job.defaultLocation}}"><u>Location:</u> {{slot.location}}
+          </div>
+          <div class="hideName" ng-repeat="volunteer in slot.assigned">
+            {{volunteer.name}}
+          </div>
       </a>
     </div>
   </div>

@@ -28,11 +28,23 @@ a.list-group-item {
 .Fixed
 {
     position: fixed;
-    top: 225px;
+    top: 178px;
     width: 300px;
+    height: 600px;
+    overflow-y: auto;
 }
 
 .smallertext
 {
   font-size: 15px;
+}
+#ex1::-webkit-scrollbar{
+  height: 600px;
+  width:5px;
+  background: white;
+}
+#ex1::-webkit-scrollbar-thumb{
+  height: 6px;
+  background-color: green;
+  border-radius:10px;
 }
