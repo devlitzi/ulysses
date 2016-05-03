@@ -1,35 +1,47 @@
 <div class="paddingBig2">
-<div class="job-table">
-  <div class="time-col">
-    <div class="crouching-tiger-hidden-label2">Time</div>
-    <div ng-repeat="time in timeArray" class="time-block">
-      {{time}}
+  <div class="job-table">
+
+    <div style "width: 720px">
+        <div style=" 180px; float: left">
+            <div class="time-col">
+              <div class="crouching-tiger-hidden-label2">Time</div>
+              <div ng-repeat="time in timeArray" class="time-block">
+                {{time}}
+              </div>
+            </div>
+        </div>
+
+        <div style= "margin-left:182px;">
+
+          <div class="foo">
+            <div ng-repeat="job in schedule.jobs" class="job-col">
+                <div class="fixedMid">
+                    <div class= "job-header">
+                      <label>{{job.name}}  <span ng-if="job.isJudging" class="judgeJ">J</span></label>
+                      <br>
+                      <i>Arrive {{job.training}} minutes before shift for training</i><br>
+                      <i ng-show="{{job.defaultLocation}}">Location: {{job.location}}</i>
+                      <i ng-hide="{{job.defaultLocation}}">Location in shift.</i>
+                    </div>
+                </div>
+
+          <br>
+          <br>
+          <br>
+          <br>
+              <div class="slot-container">
+                <a ng-repeat="slot in job.slots" class="slot" ng-style="calculateSlotPosition(slot)" ui-sref="schedule.edit.assign({ job: job._id, slot: slot._id })" id="ex3">
+                    <div ng-hide="{{job.defaultLocation}}"><u>Location:</u> {{slot.location}}
+                    </div>
+                    <div class="hideName" ng-repeat="volunteer in slot.assigned">
+                      {{volunteer.name}}
+                    </div>
+                </a>
+              </div>
+            </div> 
+          </div>
+
+        </div>
     </div>
   </div>
-
-
-  <div ng-repeat="job in schedule.jobs" class="job-col">
-      <div class="job-header fixedMid">
-        <label>{{job.name}}  <span ng-if="job.isJudging" class="judgeJ">J</span></label>
-        <br>
-        <i>Arrive {{job.training}} minutes before shift for training</i><br>
-        <i ng-show="{{job.defaultLocation}}">Location: {{job.location}}</i>
-        <i ng-hide="{{job.defaultLocation}}">Location in shift.</i>
-      </div>
-
-<br>
-<br>
-<br>
-<br>
-    <div class="slot-container">
-      <a ng-repeat="slot in job.slots" class="slot" ng-style="calculateSlotPosition(slot)" ui-sref="schedule.edit.assign({ job: job._id, slot: slot._id })" id="ex3">
-          <div ng-hide="{{job.defaultLocation}}"><u>Location:</u> {{slot.location}}
-          </div>
-          <div class="hideName" ng-repeat="volunteer in slot.assigned">
-            {{volunteer.name}}
-          </div>
-      </a>
-    </div>
-  </div>
-</div>
 </div>
