@@ -29,3 +29,12 @@
   padding-top: 100px;
   background-color: white;
 }
+
+img.resize{
+  width:400px; /* you can use % */
+  height: auto;
+}
+
+.whiteText{
+  color: white;
+}
