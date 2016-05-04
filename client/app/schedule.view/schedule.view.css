@@ -1,17 +1,17 @@
 .job-col {
   border: 2px solid blue;
   display: table-cell;
-  height: auto;
+  height: 1600px;
   width: 200px;
   padding: 0 5px;
 }
 
 .foo {
   border: 2px solid red;
-  display: table-cell;
+  display: table;
   padding: 0 5px;
   height:1600px;
-  width: 200px;
+
 }
 
 .slot-container {
@@ -38,8 +38,6 @@
   border-top: 1px solid black;
   text-align: center;
   background-color: red;
-  position: absolute;
-  overflow: hidden;
 }
 
 .paddingBig2 {
@@ -79,7 +77,7 @@
 
 .fixedMid
 {
-  position: fixed;
+  /*position: fixed;*/
   width: 190px;
   background-color: white;
   z-index: 100;
