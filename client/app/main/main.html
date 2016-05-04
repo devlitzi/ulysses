@@ -4,7 +4,7 @@
     <div>
       <h1>Ulysses</h1>
       <p class="lead">*Scheduler of the Mind*</p>
-      <img src="assets/images/OMER_BIG.png">
+      <img class="resize" src="assets/images/OMER_BIG.png">
     </div>
     <br>
     <form ng-show="nav.hasRole('organizer')" class="form-inline" role="form" style="padding: 8px; margin-left: 30px">
@@ -15,7 +15,7 @@
     </form>
     <h2 ng-show="nav.hasRole('volunteer')">List of Schedules:</h2>
     <div ng-show="nav.hasRole('volunteer')" ng-repeat="schedule in schedules">
-      {{ schedule.name }}
+      <a class="whiteText" ui-sref="schedule.build({ id: schedule._id })">{{ schedule.name }}</a>
     </div>
   </div>
 </header>

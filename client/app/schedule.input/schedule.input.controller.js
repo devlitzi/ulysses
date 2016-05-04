@@ -61,10 +61,13 @@ angular.module('ulyssesApp')
             },
             complete: function() {
                 $scope.$apply();
+                $scope.createallVolunteerArray();
             }
           });
         }
+
       }
+
       if ($scope.schedule.unassigned > 0){
         for (var i = 0; i < $scope.schedule.unassigned; i++) {
          $scope.schedule.unassigned.email
@@ -72,6 +75,7 @@ angular.module('ulyssesApp')
        }
 
       }
+
     };
 
     $scope.processTeams = function(data) {
@@ -159,7 +163,7 @@ angular.module('ulyssesApp')
 
     //===================All Volunteer Array====================================
     $scope.createallVolunteerArray = function(){
-
+console.log($scope.schedule.unassigned);
       //---------Unassigned portion of volunteers-------------------
       $scope.schedule.unassigned.forEach(function(element, index, array){
         console.log("index: " + index);
