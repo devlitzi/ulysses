@@ -1,6 +1,6 @@
-.job-col {
-  border: 2px solid black;
-  display: table-cell;
+/*.job-col {
+  /*border: 2px solid black;*/
+  /*display: table-cell;
   height: 1200px;
   width: 200px;
   padding: 0 5px;
@@ -89,4 +89,4 @@
 #ex3::-webkit-scrollbar-thumb{
   background-color: green;
   border-radius:10px;
-}
+}*/

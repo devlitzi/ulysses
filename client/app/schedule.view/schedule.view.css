@@ -1,13 +1,22 @@
 .job-col {
-  border: 2px solid black;
+  border: 2px solid blue;
   display: table-cell;
-  height: 1200px;
+  height: 1600px;
   width: 200px;
   padding: 0 5px;
 }
 
+.foo {
+  border: 2px solid red;
+  display: table;
+  padding: 0 5px;
+  height:1600px;
+
+}
+
 .slot-container {
   position: relative;
+  width: 190px
 }
 
 .slot {
@@ -28,6 +37,7 @@
   border-bottom: 1px solid black;
   border-top: 1px solid black;
   text-align: center;
+  background-color: red;
 }
 
 .paddingBig2 {
@@ -38,6 +48,10 @@
 .time-block {
   height: 62px;
   padding-top: 15px;
+}
+
+.time-col {
+
 }
 
 .crouching-tiger-hidden-label2{
@@ -63,7 +77,7 @@
 
 .fixedMid
 {
-  position: fixed;
+  /*position: fixed;*/
   width: 190px;
   background-color: white;
   z-index: 100;
@@ -72,6 +86,7 @@
   padding-top: 1000px;
   border-collapse: collapse;
   display: table;
+
 }
 
 .hideName {
