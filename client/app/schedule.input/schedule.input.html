@@ -72,7 +72,11 @@
   <div class="panel panel-default volunteer-container">
     <div class="panel-heading">Email all volunteers:</div>
     <div class="panel-body">
-      <button ng-click="sendEmails()" type="button" class="btn btn-success">Email Volunteers</button>
+
+      <input type="radio" name="browser" ng-click="check(1)" value="Gmail">Gmail<br>
+      <input type="radio" name="browser" ng-click="check(2)" value="Local">Local Email Client<br>
+      <button type="submit" ng-click="sendEmails()" class="btn btn-success">Email All Volunteers</button>
+
     </div>
   </div>
   <div class="panel panel-default volunteer-container">
