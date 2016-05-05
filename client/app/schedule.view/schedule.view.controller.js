@@ -61,5 +61,10 @@ angular.module('ulyssesApp')
       };
     }
 
+    $(".foo").scroll(function() {
+        scrolled = $(".foo").scrollLeft();
+        $(".job-header").scrollLeft(scrolled);
+      });
+
 
   });
