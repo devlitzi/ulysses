@@ -232,9 +232,29 @@ console.log($scope.allVolunteers);
       });
       return emailList;
     };
+    $scope.dateExtract = function(){
+var year = null;
+var day = null;
+var month = null;
+      year = $scope.schedule.date.substring(0,4);
+      day = $scope.schedule.date.substring(8,10);
+      month = $scope.schedule.date.substring(5,7);
+      console.log($scope.schedule.date);
+      console.log(year);
+      console.log(month);
+      console.log(day);
+      return day + "-" + month + "-" + year;
+    }
     $scope.sendEmailsUnassigned = function(volunteers){
       if($scope.createEmailListUnassigned().length != 0){
+console.log($scope.dateExtract());
       console.log("hi");
+      if($scope.emailOption == null){
+        $window.alert("Please Select An Email Option.");
+      }
+
+      if($scope.emailOption == "Gmail"){
+
       var str = 'http://mail.google.com/mail/?view=cm&fs=1'+
       '&to=' + $scope.createEmailListUnassigned() +
       '&su=' + "Volunteer Information for Odyssey of the Mind" +
@@ -242,10 +262,17 @@ console.log($scope.allVolunteers);
       '&ui=1';
       $window.open(str);
     }
+    if($scope.emailOption == "Local"){
+    var message = "Dear Volunteer, Thank you for your willingness to volunteer, unfortunately we have more volunteers than expected and we have no need for your help this year. Thank you for your interest! You can log in to see your schedule at http://localhost:9000/ Sincerely, Odyssey of the Mind";
+    var subject = "Volunteer Information for Odyssey of the Mind";
+    var emailList = $scope.createEmailListUnassigned();
+    document.location.href = "mailto:"+ emailList + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(message);
+  }
+}
     else{
       $window.alert("There are no unassigned volunteers to email! All volunteers are assigned or you have not imported them.")
     }
-    };
+  };
 
 
     $scope.check = function(emailOption) {
@@ -266,19 +293,21 @@ console.log($scope.allVolunteers);
       console.log("hi");
       console.log($scope.emailOption);
       if($scope.createEmailList().length != 0){
-
+if($scope.emailOption == null){
+  $window.alert("Please Select An Email Option.")
+}
       if($scope.emailOption == "Gmail"){
         var str = 'http://mail.google.com/mail/?view=cm&fs=1'+
         '&to=' + $scope.createEmailList() +
         '&su=' + "Volunteer Information for Odyssey of the Mind" +
-        '&body=' + "Dear Volunteer, %0D%0A%0D%0AThank you for your participation in this event!%0D%0A%0D%0AYou can log in to see your schedule at http://localhost:9000/ .%0D%0A%0D%0ASincerely,%0D%0A%0D%0AOdyssey of the Mind" +
+        '&body=' + "Dear Volunteer, %0D%0A%0D%0AThank you for your participation in this event happening on " + $scope.dateExtract() + "!%0D%0A%0D%0AYou can log in to see your schedule at http://localhost:9000/ .%0D%0A%0D%0ASincerely,%0D%0A%0D%0AOdyssey of the Mind" +
         '&ui=1';
         $window.open(str);
 
       }
 
     if($scope.emailOption == "Local"){
-      var message = "Dear Volunteer, Thank you for your participation in this event! You can log in to see your schedule at http://localhost:9000/ Sincerely, Odyssey of the Mind";
+      var message = "Dear Volunteer, Thank you for your participation in this event happening on " + $scope.dateExtract() + "! You can log in to see your schedule at http://localhost:9000/ Sincerely, Odyssey of the Mind";
       var subject = "Volunteer Information for Odyssey of the Mind";
       var emailList = $scope.createEmailList();
       document.location.href = "mailto:"+ emailList + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(message);

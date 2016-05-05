@@ -75,14 +75,12 @@
       <input type="radio" name="browser" ng-click="check(1)" value="Gmail">Gmail<br>
       <input type="radio" name="browser" ng-click="check(2)" value="Local">Local Email Client<br>
       <button type="submit" ng-click="sendEmails()" class="btn btn-success">Email All Volunteers</button>
+      <br>
+      <br>
+      <button type="submit" ng-click="sendEmailsUnassigned()" class="btn btn-success">Email All Unassigned Volunteers</button>
     </div>
   </div>
-  <div class="panel panel-default volunteer-container">
-    <div class="panel-heading">Email all unassigned volunteers:</div>
-    <div class="panel-body">
-      <button ng-click="sendEmailsUnassigned()" type="button" class="btn btn-primary">Email Unassigned Volunteers</button>
-    </div>
-  </div>
+
 
   </div>
 
