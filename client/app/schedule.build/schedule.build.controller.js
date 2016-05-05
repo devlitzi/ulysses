@@ -33,6 +33,69 @@ angular.module('ulyssesApp')
       $scope.blindDate = !$scope.blindDate;
       $scope.setDate();
     };
+    
+    //#######################
+    //####HERE BE DRAGONS####
+    //#######################
+    //
+    // $scope.conflict = function(s) {
+    //   //temp = slots[0];
+    //   //console.log("you suck at progframming and spelling");
+    //   //for(var i = 0;i<slots.length;i++){
+    //  // console.log('slots: ' + slots[i] = ((int) slots[i].start.valueOf().replace(/[^0123456789]*/g,"")));
+    //  //   console.log('has type: ' + typeof(slots[i].start.valueOf().replace(/[^0123456789]*/g,"")));}
+    //   for(var i = 1;i<s.length;i++){
+    //
+    //     //console.log("#################GOT HERE##########3");
+    //    // console.log("the valueOf you are using is: "+slots[i].start.valueOf().replace(/[^0123456789]*/g,""));
+    //     console.log("the end toString you are using is: "+s[i].start.toString().replace(/[^0123456789]|^.*-.*-../g,""));
+    //     console.log("the end you are using is: "+s[i].start.toString());
+    //     console.log("the end toString you are using is: "+s[i].end.toString().replace(/[^0123456789]|^.*-.*-../g,""));
+    //     console.log("the end you are using is: "+s[i].end.toString());
+    //     // console.log("the stringify you are using is: "+JSON.stringify(slots[i].start));
+    //     var b = (((s[i].start.toString().replace(/[^0123456789]|^.*-.*-../g,"")<s[0].start.toString().replace(/[^0123456789]|^.*-.*-../g,""))&&(s[i].end.toString().replace(/[^0123456789]|^.*-.*-../g,"")<s[0].start.toString().replace(/[^0123456789]|^.*-.*-../g,"")))||
+    //     ((s[i].end.toString().replace(/[^0123456789]|^.*-.*-../g,"")>s[0].end.toString().replace(/[^0123456789]|^.*-.*-../g,""))&&(s[i].start.toString().replace(/[^0123456789]|^.*-.*-../g,"")>s[0].end.toString().replace(/[^0123456789]|^.*-.*-../g,""))));
+    //     //(((slots[i].start.valueOf().replace(/[^0123456789]*/g,"")<=slots[0].start.valueOf().replace(/[^0123456789]*/g,""))&&(slots[i].end.valueOf().replace(/[^0123456789]*/g,"")<slots[0].start.valueOf().replace(/[^0123456789]*/g,"")))||
+    //       //((slots[i].end.valueOf().replace(/[^0123456789]*/g,"")>=slots[0].end.valueOf().replace(/[^0123456789]*/g,""))&&(slots[i].start.valueOf().replace(/[^0123456789]*/g,"")>slots[0].end.valueOf().replace(/[^0123456789]*/g,"")))){
+    //     if(b){
+    //       console.log("did the other if: " + b);
+    //       //throw "it worked?";
+    //     }else{
+    //       console.log("the error is about to happen, get ready!!!");
+    //       throw "YOU fun DUCKED UP ERROR: your schedule is bad and you should feel bad";
+    //     }
+    //   }
+    // }
+    //
+    // $scope.anthronyh = function(slots) {
+    //   //console.log('slo65ts: ' + JSON.stringify(slots));
+    //   //console.log('slo65ts has type(length): ' + slots.length);
+    //   var myfish = 0;
+    //   myfish = slots;
+    // //  console.log('myfish has type: '+typeof(myfish));
+    //   if(slots.length<2){return "all is good in the world";}
+    //   console.log("did the if");
+    //   $scope.conflict(myfish);
+    //   var temp = myfish.length;
+    //   myfish = [];
+    //   for(var i = slots.length-temp + 1;i<slots.length;i++){
+    //     myfish[i - temp - 1] = slots[i];
+    //   }
+    //   //myfish.shift();
+    //   console.log('slo9ts: ' + slots);
+    //   $scope.anthronyh(myfish);
+    // }
+    //
+    // $scope.joe = function(slots) {
+    //   var myfish = 0;
+    //   myfish = slots;
+    //   myfish.forEach(function(x){$scope.anthronyh(x.slots)});
+    //   //$scope.anthronyh(slots);
+    // //  for(var i = 0;i<slots.length;i++){
+    //  //   console.log("the type here is: "+JSON.stringify(slots[i].slots));
+    //   //  $scope.anthronyh(slots[i]);}
+    //   return "$scope.schedule.jobs.save({})";
+    // }
 
     $scope.setDate = function() {
       var ourDate = $scope.schedule.date;

@@ -11,6 +11,8 @@
       <div class="list-group-item" ng-hide="blindDate">
         <div class="form-group">
           <uib-datepicker ng-model="schedule.date"></uib-datepicker>
+          <br>
+          <div><small>Pick a date for your schedule</small></div>
         </div>
       </div>
       <div class="list-group-item" ng-repeat="job in schedule.jobs">
@@ -48,6 +50,7 @@
             <div class="form-group">
               <button class="btn btn-danger" type="button" ng-click="removeJob($index)">Remove Job</button>
             </div>
+            <div><small>Warning: overlapping start and end times within a slot will not be reflected in the "View Schedule" tab (create a new position if overlapping start and end times are desired).</small></div>
           </div>
 
           <div class="col-md-9">
