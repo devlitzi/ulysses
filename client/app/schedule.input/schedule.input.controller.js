@@ -10,6 +10,7 @@ angular.module('ulyssesApp')
     $scope.detail = null;
     $scope.allVolunteers = [];
     $scope.constraintsImported = false;
+    $scope.emailOption = null;
 
     $scope.$parent.schedule.$promise.then(function(schedule) {
       $scope.schedule = schedule;
@@ -246,16 +247,43 @@ console.log($scope.allVolunteers);
     }
     };
 
-    $scope.sendEmails = function(volunteers){
+
+    $scope.check = function(emailOption) {
+
+          console.log("I ran");
+          console.log(emailOption);
+        if(emailOption == 1){
+          console.log("I ran 1");
+          $scope.emailOption = "Gmail";
+        }
+        if(emailOption == 2){
+          console.log("I ran 2");
+          $scope.emailOption = "Local";
+        }
+    };
+
+    $scope.sendEmails = function(volunteers,Number){
       console.log("hi");
+      console.log($scope.emailOption);
       if($scope.createEmailList().length != 0){
-      var str = 'http://mail.google.com/mail/?view=cm&fs=1'+
-      '&to=' + $scope.createEmailList() +
-      '&su=' + "Volunteer Information for Odyssey of the Mind" +
-      '&body=' + "Dear Volunteer, %0D%0A%0D%0AThank you for your participation in this event!%0D%0A%0D%0AYou can log in to see your schedule at http://localhost:9000/ .%0D%0A%0D%0ASincerely,%0D%0A%0D%0AOdyssey of the Mind" +
-      '&ui=1';
-      $window.open(str);
+
+      if($scope.emailOption == "Gmail"){
+        var str = 'http://mail.google.com/mail/?view=cm&fs=1'+
+        '&to=' + $scope.createEmailList() +
+        '&su=' + "Volunteer Information for Odyssey of the Mind" +
+        '&body=' + "Dear Volunteer, %0D%0A%0D%0AThank you for your participation in this event!%0D%0A%0D%0AYou can log in to see your schedule at http://localhost:9000/ .%0D%0A%0D%0ASincerely,%0D%0A%0D%0AOdyssey of the Mind" +
+        '&ui=1';
+        $window.open(str);
+
+      }
+
+    if($scope.emailOption == "Local"){
+      var message = "Dear Volunteer, Thank you for your participation in this event! You can log in to see your schedule at http://localhost:9000/ Sincerely, Odyssey of the Mind";
+      var subject = "Volunteer Information for Odyssey of the Mind";
+      var emailList = $scope.createEmailList();
+      document.location.href = "mailto:"+ emailList + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(message);
     }
+  }
     else{
       $window.alert("There are no volunteers to email! Import a volunteer CSV to begin scheduling.");
     }
