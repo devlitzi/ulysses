@@ -1,45 +1,58 @@
-/*.job-col {
-  /*border: 2px solid black;*/
-  /*display: table-cell;
-  height: 1200px;
+.list-group-item1
+{
+  overflow: auto;
+  display: block;
+  background-color: #fff;
+  border: 1px solid #ddd;'
+  height: 200px;
+}
+.job-col {
+  border: 2px solid black;
+  display: table-cell;
+  height: 1600px;
   width: 200px;
   padding: 0 5px;
 }
 
+
 .slot-container {
   position: relative;
+  width: 190px
 }
 
-.slotView {
-  position: absolute;
-  border-width: 1px;
-  border-style: solid;
-  width: 100%;
+.slot {
+  border: 1px solid black;
   overflow-y: auto;
+  text-align: center;
+  height: 150px;
+
 }
 
 .slot:hover {
   text-decoration: none;
+
 }
 
-.job-header2 {
-  border-bottom: 1px solid black;
-}
+.job-header {
 
-.paddingVolunteer {
-  padding-top: 100px;
+  border-top: 1px solid black;
   text-align: center;
-  margin: 15 auto;
-  width: auto;
+  background-color: white;
+}
 
-
+.paddingBig2 {
+  padding-top: 100px;
 
 }
 
 .time-block {
   height: 62px;
   padding-top: 15px;
-  padding-right: 15px;
+}
+
+.time-col {
+  left: 20%;
+  top: 20%;
 }
 
 .crouching-tiger-hidden-label2{
@@ -49,7 +62,7 @@
 
 .judgeJ{
   display: inline-block;
-  min-width: 10px;
+  min-width: 10px;Rici Alseson
   padding: 3px 7px;
   font-size: 12px;
   font-weight: bold;
@@ -63,30 +76,38 @@
 }
 
 
-.fixedMid
-{
-  position: fixed;
-  width: 190px;
-  background-color: white;
-  z-index: 100;
-}
 .job-table {
   padding-top: 1000px;
   border-collapse: collapse;
   display: table;
+
 }
 
 .hideName {
   white-space: nowrap;
-  width: 12em;
-  overflow: hidden;
+  overflow-y: hidden;
   text-overflow: ellipsis;
+  width: auto;
+  height: auto;
 }
+
 #ex3::-webkit-scrollbar{
   width:5px;
   background-color: #dff0d8;
+  position: fixed;
 }
 #ex3::-webkit-scrollbar-thumb{
   background-color: green;
   border-radius:10px;
-}*/
+}
+
+#ex2::-webkit-scrollbar{
+  width:5px;
+  height: 10px;
+  background-color: gray;
+  border-radius: 5px;
+}
+#ex2::-webkit-scrollbar-thumb{
+  background-color: black;
+  border-radius:5px;
+}

@@ -1,32 +1,36 @@
-
-<div class="paddingVolunteer">
-    <div class="container">
-      <h1>Master Schedule</h2>
+<div class="paddingBig2">
+  <div class="container">
+  <div style="overflow: auto; height: 700px" id="ex2">
     <div class="job-table">
-      <div class="time-col">
-        <div class="crouching-tiger-hidden-label2">Time</div>
-        <div ng-repeat="time in timeArray" class="time-block">
-          {{time}}
-        </div>
-      </div>
 
+              <div ng-repeat="job in schedule.jobs" class="job-col">
+                  <div class="fixedMid">
+                      <div class= "job-header">
+                        <label>{{job.name}}  <span ng-if="job.isJudging" class="judgeJ">J</span></label>
+                        <br>
+                        <i>Arrive {{job.training}} minutes before shift for training</i><br>
+                        <i ng-show="{{job.defaultLocation}}">Location: {{job.location}}</i>
+                        <i ng-hide="{{job.defaultLocation}}">Location in shift.</i>
+                      </div>
+                  </div>
 
-      <div ng-repeat="job in schedule.jobs" class="job-col">
-          <div class="job-header2">
-            <label>{{job.name}}  <span ng-if="job.isJudging" class="judgeJ">J</span></label>
-            <br>
-            <i>Arrive {{job.training}} minutes before shift for training</i><br>
-            <i ng-show="{{job.defaultLocation}}">Location: {{job.location}}</i>
-            <i ng-hide="{{job.defaultLocation}}">Location in shift.</i>
-          </div>
+                <div class="slot-container">
+                  <div class="list-group-item1"  ng-repeat="slot in job.slots" ui-sref="schedule.edit.assign({ job: job._id, slot: slot._id })">
+                    <div class="slot" ng-class="{ 'list-group-item-danger': slot.assigned.length == 0, 'list-group-item-warning': slot.assigned.length != 0 && slot.assigned.length < slot.positions, 'list-group-item-success': slot.assigned.length >= slot.positions }" id="ex3">
+                      <b>{{job.name}}</b>
+                      <br>
+                      <i>{{timeRange(slot)}}</i>
+                      <div ng-hide="{{job.defaultLocation}}"><u>Location:</u> {{slot.location}}</div>
+                      <div class="hideName" ng-repeat="volunteer in slot.assigned">
+                        {{volunteer.name}}
+                      </div>
+                    </div>
 
-        <div class="slot-container">
-          <div ng-repeat="slot in job.slots" class="slotView" ng-style="calculateSlotPosition(slot)" id="ex3">
-            <div ng-hide="{{job.defaultLocation}}"><u>Location:</u> {{slot.location}}</div>
-            <div class="hideName" ng-repeat="volunteer in slot.assigned"> {{volunteer.name}} </div>
-          </div>
-        </div>
-      </div>
+                  </div>
+                </div>
+              </div>
+
     </div>
   </div>
+</div>
 </div>

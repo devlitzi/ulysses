@@ -1,18 +1,19 @@
+.list-group-item1
+{
+  overflow: auto;
+  display: block;
+  background-color: #fff;
+  border: 1px solid #ddd;'
+  height: 200px;
+}
 .job-col {
-  border: 2px solid blue;
+  border: 2px solid black;
   display: table-cell;
   height: 1600px;
   width: 200px;
   padding: 0 5px;
 }
 
-.foo {
-  border: 2px solid red;
-  display: table;
-  padding: 0 5px;
-  height:1600px;
-
-}
 
 .slot-container {
   position: relative;
@@ -20,12 +21,11 @@
 }
 
 .slot {
-  position: absolute;
-  border-width: 1px;
-  border-style: solid;
-  width: 100%;
+  border: 1px solid black;
   overflow-y: auto;
   text-align: center;
+  height: 150px;
+
 }
 
 .slot:hover {
@@ -34,10 +34,10 @@
 }
 
 .job-header {
-  border-bottom: 1px solid black;
+
   border-top: 1px solid black;
   text-align: center;
-  background-color: red;
+  background-color: white;
 }
 
 .paddingBig2 {
@@ -51,7 +51,8 @@
 }
 
 .time-col {
-
+  left: 20%;
+  top: 20%;
 }
 
 .crouching-tiger-hidden-label2{
@@ -61,7 +62,7 @@
 
 .judgeJ{
   display: inline-block;
-  min-width: 10px;
+  min-width: 10px;Rici Alseson
   padding: 3px 7px;
   font-size: 12px;
   font-weight: bold;
@@ -75,13 +76,6 @@
 }
 
 
-.fixedMid
-{
-  /*position: fixed;*/
-  width: 190px;
-  background-color: white;
-  z-index: 100;
-}
 .job-table {
   padding-top: 1000px;
   border-collapse: collapse;
@@ -100,8 +94,20 @@
 #ex3::-webkit-scrollbar{
   width:5px;
   background-color: #dff0d8;
+  position: fixed;
 }
 #ex3::-webkit-scrollbar-thumb{
   background-color: green;
   border-radius:10px;
+}
+
+#ex2::-webkit-scrollbar{
+  width:5px;
+  height: 10px;
+  background-color: gray;
+  border-radius: 5px;
+}
+#ex2::-webkit-scrollbar-thumb{
+  background-color: black;
+  border-radius:5px;
 }
