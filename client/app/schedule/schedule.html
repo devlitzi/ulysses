@@ -12,6 +12,7 @@
       <a class="btn btn-default" ui-sref="schedule.edit({ id: schedule._id })" ui-sref-active="btn-primary">Assign Volunteers</a>
       <a class="btn btn-default" ui-sref="schedule.view({ id: schedule._id })" ui-sref-active="btn-primary">View Schedule</a>
     </div>
+    <button type="button" class="btn btn-danger" ng-click="deleteSchedule(schedule)">Delete Schedule</button>
   </div>
 
   <div ui-view class="schedule-sub"></div>
